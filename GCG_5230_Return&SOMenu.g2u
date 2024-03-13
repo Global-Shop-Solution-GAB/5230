@@ -1,0 +1,1606 @@
+Program.Sub.ScreenSU.Start
+Gui.FormReturnAndSO..Create
+Gui.FormReturnAndSO..Caption("Returns And Sales Orders")
+Gui.FormReturnAndSO..Size(15180,9735)
+Gui.FormReturnAndSO..MinX(0)
+Gui.FormReturnAndSO..MinY(0)
+Gui.FormReturnAndSO..Position(0,0)
+Gui.FormReturnAndSO..BackColor(-2147483633)
+Gui.FormReturnAndSO..MousePointer(0)
+Gui.FormReturnAndSO..Event(UnLoad,FormReturnAndSO_UnLoad)
+Gui.FormReturnAndSO.lblCustomer.Create(Label,"Customer :",True,885,255,0,0,240,True,0,"Arial",8,-2147483633,0)
+Gui.FormReturnAndSO.txtCustomer.Create(TextBox,"",True,1335,390,0,930,120,True,0,"Arial",12,-2147483643,1)
+Gui.FormReturnAndSO.txtCustomer.Event(LostFocus,txtCustomer_LostFocus)
+Gui.FormReturnAndSO.txtCustomer.TabStop(True)
+Gui.FormReturnAndSO.txtCustomer.TabIndex(1)
+Gui.FormReturnAndSO.cmdCustomerBrowser.Create(Button)
+Gui.FormReturnAndSO.cmdCustomerBrowser.Size(510,510)
+Gui.FormReturnAndSO.cmdCustomerBrowser.Position(6090,60)
+Gui.FormReturnAndSO.cmdCustomerBrowser.Caption("^")
+Gui.FormReturnAndSO.cmdCustomerBrowser.Event(Click,cmdCustomerBrowser_Click)
+Gui.FormReturnAndSO.cmdCustomerBrowser.FontSize(11)
+Gui.FormReturnAndSO.cmdCustomerBrowser.TabStop(True)
+Gui.FormReturnAndSO.cmdCustomerBrowser.TabIndex(2)
+Gui.FormReturnAndSO.lblShipTo.Create(Label,"Ship To ID : ",True,930,255,0,6645,240,True,0,"Arial",8,-2147483633,0)
+Gui.FormReturnAndSO.txtCustomerName.Create(TextBox,"",True,3090,390,0,2940,120,False,0,"Arial",12,-2147483643,1)
+Gui.FormReturnAndSO.txtCustomerName.TabStop(True)
+Gui.FormReturnAndSO.txtCustomerName.TabIndex(1)
+Gui.FormReturnAndSO.lblPart.Create(Label,"Part : ",True,480,255,0,1410,825,True,0,"Arial",8,-2147483633,0)
+Gui.FormReturnAndSO.lblPart.DefaultValue("")
+Gui.FormReturnAndSO.txtPartNumber.Create(TextBox,"",True,2415,390,0,1905,690,False,0,"Arial",12,-2147483643,1)
+Gui.FormReturnAndSO.cmdPartBrowser.Create(Button)
+Gui.FormReturnAndSO.cmdPartBrowser.Size(510,510)
+Gui.FormReturnAndSO.cmdPartBrowser.Position(4380,630)
+Gui.FormReturnAndSO.cmdPartBrowser.Caption("^")
+Gui.FormReturnAndSO.cmdPartBrowser.Event(Click,cmdPartBrowser_Click)
+Gui.FormReturnAndSO.cmdPartBrowser.Enabled(False)
+Gui.FormReturnAndSO.cmdPartBrowser.FontSize(11)
+Gui.FormReturnAndSO.cmdPartBrowser.TabStop(True)
+Gui.FormReturnAndSO.cmdPartBrowser.TabIndex(5)
+Gui.FormReturnAndSO.lblPartDescription.Create(Label,"Part Description : ",True,1350,255,0,4995,825,True,0,"Arial",8,-2147483633,0)
+Gui.FormReturnAndSO.txtPartDescription.Create(TextBox,"",True,2985,390,0,6390,690,False,0,"Arial",12,-2147483643,1)
+Gui.FormReturnAndSO.lblPrice.Create(Label,"Price : ",True,570,255,0,9420,825,True,0,"Arial",8,-2147483633,0)
+Gui.FormReturnAndSO.txtPrice.Create(TextBox,"",True,1215,390,0,9990,690,False,1,"Arial",12,-2147483643,1)
+Gui.FormReturnAndSO.txtPrice.MaxLength(15)
+Gui.FormReturnAndSO.txtPrice.Event(Change,txtPrice_Change)
+Gui.FormReturnAndSO.txtPrice.NumericOnly(1)
+Gui.FormReturnAndSO.txtPrice.Event(LostFocus,txtPrice_LostFocus)
+Gui.FormReturnAndSO.txtPrice.TabStop(True)
+Gui.FormReturnAndSO.txtPrice.TabIndex(6)
+Gui.FormReturnAndSO.lblQuantity.Create(Label,"Quantity :",True,840,255,0,11250,825,True,0,"Arial",8,-2147483633,0)
+Gui.FormReturnAndSO.txtQuantity.Create(TextBox,"",True,1215,390,0,12090,690,False,1,"Arial",12,-2147483643,1)
+Gui.FormReturnAndSO.txtQuantity.NumericOnly(1)
+Gui.FormReturnAndSO.txtQuantity.MaxLength(15)
+Gui.FormReturnAndSO.txtQuantity.Event(Change,txtQuantity_Change)
+Gui.FormReturnAndSO.txtQuantity.Event(LostFocus,txtQuantity_LostFocus)
+Gui.FormReturnAndSO.txtQuantity.TabStop(True)
+Gui.FormReturnAndSO.txtQuantity.TabIndex(7)
+Gui.FormReturnAndSO.lblTotal.Create(Label,"Total :",True,525,255,0,13440,825,True,0,"Arial",8,-2147483633,0)
+Gui.FormReturnAndSO.gsgcOrderGrid.Create(GsGridControl)
+Gui.FormReturnAndSO.gsgcOrderGrid.Size(15105,6750)
+Gui.FormReturnAndSO.gsgcOrderGrid.Position(0,2010)
+Gui.FormReturnAndSO.gsgcOrderGrid.Anchor(15)
+Gui.FormReturnAndSO.gsgcOrderGrid.Event(RowClick,gsgcOrderGrid_RowClick)
+Gui.FormReturnAndSO.cmdUpload.Create(Button)
+Gui.FormReturnAndSO.cmdUpload.Size(1275,495)
+Gui.FormReturnAndSO.cmdUpload.Position(13605,8865)
+Gui.FormReturnAndSO.cmdUpload.Anchor(10)
+Gui.FormReturnAndSO.cmdUpload.Caption("Upload Return")
+Gui.FormReturnAndSO.cmdUpload.Event(Click,cmdUpload_Click)
+Gui.FormReturnAndSO.cmdUpload.Enabled(False)
+Gui.FormReturnAndSO.ddlShipTo.Create(DropDownList)
+Gui.FormReturnAndSO.ddlShipTo.Size(4695,375)
+Gui.FormReturnAndSO.ddlShipTo.Position(7620,105)
+Gui.FormReturnAndSO.ddlShipTo.Enabled(False)
+Gui.FormReturnAndSO.ddlShipTo.FontSize(11)
+Gui.FormReturnAndSO.ddlShipTo.TabStop(True)
+Gui.FormReturnAndSO.ddlShipTo.TabIndex(3)
+Gui.FormReturnAndSO.cmdExit.Create(Button)
+Gui.FormReturnAndSO.cmdExit.Size(990,495)
+Gui.FormReturnAndSO.cmdExit.Position(2970,8865)
+Gui.FormReturnAndSO.cmdExit.Caption("Exit")
+Gui.FormReturnAndSO.cmdExit.Anchor(6)
+Gui.FormReturnAndSO.cmdExit.Event(Click,cmdExit_Click)
+Gui.FormReturnAndSO.cmdExit.Visible(False)
+Gui.FormReturnAndSO.cmdExit.FontSize(11)
+Gui.FormReturnAndSO.lblName.Create(Label,"Name : ",True,600,255,0,2325,240,True,0,"Arial",8,-2147483633,0)
+Gui.FormReturnAndSO.frameReturn.Create(Frame)
+Gui.FormReturnAndSO.frameReturn.Size(6330,840)
+Gui.FormReturnAndSO.frameReturn.Position(5940,1125)
+Gui.FormReturnAndSO.lblReturnReason.Create(Label,"Return Reason : ",True,1290,255,0,105,390,True,0,"Arial",8,-2147483633,0)
+Gui.FormReturnAndSO.lblReturnReason.Parent("frameReturn")
+Gui.FormReturnAndSO.ddlReturnReason.Create(DropDownList)
+Gui.FormReturnAndSO.ddlReturnReason.Size(3570,390)
+Gui.FormReturnAndSO.ddlReturnReason.Position(1470,255)
+Gui.FormReturnAndSO.ddlReturnReason.Parent("frameReturn")
+Gui.FormReturnAndSO.ddlReturnReason.Enabled(False)
+Gui.FormReturnAndSO.ddlReturnReason.Event(Click,ddlReturnReason_Click)
+Gui.FormReturnAndSO.ddlReturnReason.FontSize(12)
+Gui.FormReturnAndSO.ddlReturnReason.TabStop(True)
+Gui.FormReturnAndSO.ddlReturnReason.TabIndex(8)
+Gui.FormReturnAndSO.ddlReturnReason.Event(LostFocus,ddlReturnReason_LostFocus)
+Gui.FormReturnAndSO.ddlReturnReason.Event(GotFocus,ddlReturnReason_GotFocus)
+Gui.FormReturnAndSO.lblType.Create(Label,"Type : ",True,555,255,0,5100,390,True,0,"Arial",8,-2147483633,0)
+Gui.FormReturnAndSO.lblType.Parent("frameReturn")
+Gui.FormReturnAndSO.txtType.Create(TextBox,"",True,525,390,0,5715,270,False,0,"Arial",12,-2147483643,1)
+Gui.FormReturnAndSO.txtType.Parent("frameReturn")
+Gui.FormReturnAndSO.cmdAddLine.Create(Button)
+Gui.FormReturnAndSO.cmdAddLine.Size(1155,495)
+Gui.FormReturnAndSO.cmdAddLine.Position(13845,1455)
+Gui.FormReturnAndSO.cmdAddLine.Anchor(9)
+Gui.FormReturnAndSO.cmdAddLine.Caption("Add Line")
+Gui.FormReturnAndSO.cmdAddLine.Event(Click,cmdAddLine_Click)
+Gui.FormReturnAndSO.cmdAddLine.Enabled(False)
+Gui.FormReturnAndSO.cmdAddLine.FontSize(11)
+Gui.FormReturnAndSO.cmdAddLine.TabStop(True)
+Gui.FormReturnAndSO.cmdAddLine.TabIndex(8)
+Gui.FormReturnAndSO.lblLoc.Create(Label,"Loc :",True,510,255,0,120,825,True,0,"Arial",8,-2147483633,0)
+Gui.FormReturnAndSO.txtTotal.Create(TextBox,"",True,990,390,0,13980,690,False,0,"Arial",12,-2147483643,1)
+Gui.FormReturnAndSO.txtTotal.Event(Change,txtTotal_Change)
+Gui.FormReturnAndSO.ddlLoc.Create(DropDownList)
+Gui.FormReturnAndSO.ddlLoc.Size(690,390)
+Gui.FormReturnAndSO.ddlLoc.Position(600,690)
+Gui.FormReturnAndSO.ddlLoc.Event(Click,ddlLoc_Click)
+Gui.FormReturnAndSO.ddlLoc.FontSize(12)
+Gui.FormReturnAndSO.ddlLoc.TabStop(True)
+Gui.FormReturnAndSO.ddlLoc.TabIndex(4)
+Gui.FormReturnAndSO.cmdClear.Create(Button)
+Gui.FormReturnAndSO.cmdClear.Size(1155,495)
+Gui.FormReturnAndSO.cmdClear.Position(12420,1455)
+Gui.FormReturnAndSO.cmdClear.Caption("Clear")
+Gui.FormReturnAndSO.cmdClear.Event(Click,cmdClear_Click)
+Gui.FormReturnAndSO.cmdClear.FontSize(11)
+Gui.FormReturnAndSO.cmdClear.Anchor(9)
+Gui.FormReturnAndSO.cmdClearAll.Create(Button)
+Gui.FormReturnAndSO.cmdClearAll.Size(1275,495)
+Gui.FormReturnAndSO.cmdClearAll.Position(120,8865)
+Gui.FormReturnAndSO.cmdClearAll.Caption("Clear All")
+Gui.FormReturnAndSO.cmdClearAll.Event(Click,cmdClearAll_Click)
+Gui.FormReturnAndSO.cmdClearAll.FontSize(11)
+Gui.FormReturnAndSO.cmdClearAll.Anchor(6)
+Gui.FormReturnAndSO.txtCustomerPart.Create(TextBox,"",True,2415,390,0,1905,1380,False,0,"Arial",12,-2147483643,1)
+Gui.FormReturnAndSO.lblCustomerPart.Create(Label,"Customer Part :",True,1215,255,0,690,1515,True,0,"Arial",8,-2147483633,0)
+Gui.FormReturnAndSO.cmdCustomerPartBrowser.Create(Button)
+Gui.FormReturnAndSO.cmdCustomerPartBrowser.Size(510,510)
+Gui.FormReturnAndSO.cmdCustomerPartBrowser.Position(4380,1320)
+Gui.FormReturnAndSO.cmdCustomerPartBrowser.Caption("^")
+Gui.FormReturnAndSO.cmdCustomerPartBrowser.FontSize(12)
+Gui.FormReturnAndSO.cmdCustomerPartBrowser.Event(Click,cmdCustomerPartBrowser_Click)
+Gui.FormReturnAndSO.cmdCustomerPartBrowser.Enabled(False)
+Gui.FormReturnAndSO.cmdDeleteLine.Create(Button)
+Gui.FormReturnAndSO.cmdDeleteLine.Size(1365,495)
+Gui.FormReturnAndSO.cmdDeleteLine.Position(1500,8865)
+Gui.FormReturnAndSO.cmdDeleteLine.Caption("Delete Line")
+Gui.FormReturnAndSO.cmdDeleteLine.FontSize(11)
+Gui.FormReturnAndSO.cmdDeleteLine.Event(Click,cmdDeleteLine_Click)
+Gui.FormReturnAndSO.lblContract.Create(Label,"Contract :",True,810,255,0,12510,240,True,0,"Arial",8,-2147483633,0)
+Gui.FormReturnAndSO.txtContract.Create(TextBox,"",True,990,390,0,13395,120,False,0,"Arial",12,-2147483643,1)
+Gui.FormReturnAndSO.cmdContractBrowser.Create(Button)
+Gui.FormReturnAndSO.cmdContractBrowser.Size(510,510)
+Gui.FormReturnAndSO.cmdContractBrowser.Position(14445,60)
+Gui.FormReturnAndSO.cmdContractBrowser.Caption("^")
+Gui.FormReturnAndSO.cmdContractBrowser.FontSize(11)
+Gui.FormReturnAndSO.cmdContractBrowser.Enabled(False)
+Gui.FormReturnAndSO.cmdContractBrowser.Event(Click,cmdContractBrowser_Click)
+Gui.FormChoice..Create
+Gui.FormChoice..Caption("Choose Entry Type")
+Gui.FormChoice..Size(4380,2085)
+Gui.FormChoice..MinX(0)
+Gui.FormChoice..MinY(0)
+Gui.FormChoice..Position(0,0)
+Gui.FormChoice..BackColor(-2147483633)
+Gui.FormChoice..MousePointer(0)
+Gui.FormChoice..MaxButton(False)
+Gui.FormChoice..MinButton(False)
+Gui.FormChoice..Sizeable(False)
+Gui.FormChoice..Event(UnLoad,FormChoice_UnLoad)
+Gui.FormChoice.cmdSalesOrder.Create(Button)
+Gui.FormChoice.cmdSalesOrder.Size(1830,1380)
+Gui.FormChoice.cmdSalesOrder.Position(210,210)
+Gui.FormChoice.cmdSalesOrder.Caption("Sales Order")
+Gui.FormChoice.cmdSalesOrder.FontSize(10)
+Gui.FormChoice.cmdSalesOrder.Event(Click,cmdSalesOrder_Click)
+Gui.FormChoice.cmdReturn.Create(Button)
+Gui.FormChoice.cmdReturn.Size(1830,1380)
+Gui.FormChoice.cmdReturn.Position(2205,210)
+Gui.FormChoice.cmdReturn.Caption("Return")
+Gui.FormChoice.cmdReturn.FontSize(10)
+Gui.FormChoice.cmdReturn.Event(Click,cmdReturn_Click)
+Program.Sub.ScreenSU.End
+
+Program.Sub.Preflight.Start
+V.Global.iLine.Declare(Long, 1)
+V.Global.fPrice.Declare(Float)
+V.Global.bQTYBRK.Declare(Boolean, False)
+V.Global.sOldLoc.Declare(String)
+Program.External.Include.Library("ORDUPL.lib")
+V.Global.sPath.Declare(String)
+V.Global.bSOPricing.Declare(Boolean)
+V.Global.bReturnPricing.Declare(Boolean)
+V.Global.bPricing.Declare(Boolean)
+V.Global.sReason.Declare(String)
+V.Global.sOldCustomer.Declare(String, "")
+V.Global.sOldContract.Declare(String, "")
+Program.Sub.Preflight.End
+
+Program.Sub.Main.Start
+F.Intrinsic.Control.Try
+V.Local.sError.Declare
+	
+'GCG_5230_Return&SOMenu.g2u
+'Trey S
+'11/02/2018
+'For Cartoplastic
+
+F.Intrinsic.UI.SetBrowserHotTypeAhead(True)
+F.Intrinsic.Control.CallSub(SetTabStops)
+F.Intrinsic.Control.CallSub(PopulateLocationDropDown)
+F.Intrinsic.Control.CallSub(LoadGrid)
+F.Intrinsic.Control.CallSub(LoadOptions)
+F.Intrinsic.String.Build("{0}\Custom\5230", V.Caller.GlobalDir, V.Global.sPath)
+
+'Launch either return or sales order based on switches
+F.Intrinsic.Control.SelectCase(V.Caller.Switches)
+	F.Intrinsic.Control.Case("SO")
+		F.Intrinsic.Control.Callsub(cmdSalesOrder_Click)
+	F.Intrinsic.Control.Case("RT")
+		F.Intrinsic.Control.Callsub(cmdReturn_Click)
+	F.Intrinsic.Control.CaseElse
+		GUI.FormReturnAndSO.cmdExit.Visible(True)
+		GUI.FormChoice..Show
+F.Intrinsic.Control.EndSelect
+
+F.Intrinsic.Control.Catch
+	F.Intrinsic.String.Build("Project: {0}{1}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}{1}GAB Version: {5}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.End 
+F.Intrinsic.Control.EndTry
+Program.Sub.Main.End
+
+Program.Sub.SetTabStops.Start
+GUI.FormReturnAndSO.cmdClear.TabStop(False)
+GUI.FormReturnAndSO.cmdClearAll.TabStop(False)
+GUI.FormReturnAndSO.cmdExit.TabStop(False)
+GUI.FormReturnAndSO.txtPartNumber.TabStop(False)
+GUI.FormReturnAndSO.txtPartDescription.TabStop(False)
+GUI.FormReturnAndSO.txtType.TabStop(False)
+GUI.FormReturnAndSO.cmdUpload.TabStop(False)
+GUI.FormReturnAndSO.txtCustomerName.TabStop(False)
+GUI.FormReturnAndSO.cmdCustomerPartBrowser.TabStop(False)
+GUI.FormReturnAndSO.txtCustomerPart.TabStop(False)
+GUI.FormReturnAndSO.cmdDeleteLine.TabStop(False)
+GUI.FormReturnAndSO.gsgcOrderGrid.TabStop(False)
+GUI.FormReturnAndSO.cmdContractBrowser.TabStop(False)
+GUI.FormReturnAndSO.txtContract.TabStop(False)
+Program.Sub.SetTabStops.End
+
+Program.Sub.LoadGrid.Start
+F.Intrinsic.Control.Try
+V.Local.sError.Declare
+
+F.Data.DataTable.Create("dtOrderLines", True)
+F.Data.DataTable.AddColumn("dtOrderLines", "Line", "Long")
+F.Data.DataTable.AddColumn("dtOrderLines", "Part", "String")
+F.Data.DataTable.AddColumn("dtOrderLines", "Loc", "String")
+F.Data.DataTable.AddColumn("dtOrderLines", "Description", "String")
+F.Data.DataTable.AddColumn("dtOrderLines", "Price", "Float")
+F.Data.DataTable.AddColumn("dtOrderLines", "Quantity", "Float")
+F.Data.DataTable.AddColumn("dtOrderLines", "Total", "Float")
+F.Data.DataTable.AddColumn("dtOrderLines", "Reason", "String")
+F.Data.DataTable.AddColumn("dtOrderLines", "Type", "String")
+
+GUI.FormReturnAndSO.gsgcOrderGrid.AddGridviewFromDatatable("gvOrderLines", "dtOrderLines")
+GUI.FormReturnAndSO.gsgcOrderGrid.SetColumnProperty("gvOrderLines", "Line", "HeaderFontBold", True)
+GUI.FormReturnAndSO.gsgcOrderGrid.SetColumnProperty("gvOrderLines", "Part", "HeaderFontBold", True)
+GUI.FormReturnAndSO.gsgcOrderGrid.SetColumnProperty("gvOrderLines", "Loc", "HeaderFontBold", True)
+GUI.FormReturnAndSO.gsgcOrderGrid.SetColumnProperty("gvOrderLines", "Description", "HeaderFontBold", True)
+GUI.FormReturnAndSO.gsgcOrderGrid.SetColumnProperty("gvOrderLines", "Price", "HeaderFontBold", True)
+GUI.FormReturnAndSO.gsgcOrderGrid.SetColumnProperty("gvOrderLines", "Quantity", "HeaderFontBold", True)
+GUI.FormReturnAndSO.gsgcOrderGrid.SetColumnProperty("gvOrderLines", "Total", "HeaderFontBold", True)
+GUI.FormReturnAndSO.gsgcOrderGrid.SetColumnProperty("gvOrderLines", "Reason", "HeaderFontBold", True)
+GUI.FormReturnAndSO.gsgcOrderGrid.SetColumnProperty("gvOrderLines", "Type", "HeaderFontBold", True)
+
+GUI.FormReturnAndSO.gsgcOrderGrid.SetColumnProperty("gvOrderLines", "Line", "AllowEdit", False)
+GUI.FormReturnAndSO.gsgcOrderGrid.SetColumnProperty("gvOrderLines", "Part", "AllowEdit", False)
+GUI.FormReturnAndSO.gsgcOrderGrid.SetColumnProperty("gvOrderLines", "Loc", "AllowEdit", False)
+GUI.FormReturnAndSO.gsgcOrderGrid.SetColumnProperty("gvOrderLines", "Description", "AllowEdit", False)
+GUI.FormReturnAndSO.gsgcOrderGrid.SetColumnProperty("gvOrderLines", "Price", "AllowEdit", False)
+GUI.FormReturnAndSO.gsgcOrderGrid.SetColumnProperty("gvOrderLines", "Quantity", "AllowEdit", False)
+GUI.FormReturnAndSO.gsgcOrderGrid.SetColumnProperty("gvOrderLines", "Total", "AllowEdit", False)
+GUI.FormReturnAndSO.gsgcOrderGrid.SetColumnProperty("gvOrderLines", "Reason", "AllowEdit", False)
+GUI.FormReturnAndSO.gsgcOrderGrid.SetColumnProperty("gvOrderLines", "Type", "AllowEdit", False)
+
+GUI.FormReturnAndSO.gsgcOrderGrid.SetColumnProperty("gvOrderLines", "Line", "ReadOnly", True)
+GUI.FormReturnAndSO.gsgcOrderGrid.SetColumnProperty("gvOrderLines", "Part", "ReadOnly", True)
+GUI.FormReturnAndSO.gsgcOrderGrid.SetColumnProperty("gvOrderLines", "Loc", "ReadOnly", True)
+GUI.FormReturnAndSO.gsgcOrderGrid.SetColumnProperty("gvOrderLines", "Description", "ReadOnly", True)
+GUI.FormReturnAndSO.gsgcOrderGrid.SetColumnProperty("gvOrderLines", "Price", "ReadOnly", True)
+GUI.FormReturnAndSO.gsgcOrderGrid.SetColumnProperty("gvOrderLines", "Quantity", "ReadOnly", True)
+GUI.FormReturnAndSO.gsgcOrderGrid.SetColumnProperty("gvOrderLines", "Total", "ReadOnly", True)
+GUI.FormReturnAndSO.gsgcOrderGrid.SetColumnProperty("gvOrderLines", "Reason", "ReadOnly", True)
+GUI.FormReturnAndSO.gsgcOrderGrid.SetColumnProperty("gvOrderLines", "Type", "ReadOnly", True)
+
+GUI.FormReturnAndSO.gsgcOrderGrid.SetColumnProperty("gvOrderLines", "Line", "MinWidth", 30)
+GUI.FormReturnAndSO.gsgcOrderGrid.SetColumnProperty("gvOrderLines", "Part", "MinWidth", 150)
+GUI.FormReturnAndSO.gsgcOrderGrid.SetColumnProperty("gvOrderLines", "Loc", "MinWidth", 30)
+GUI.FormReturnAndSO.gsgcOrderGrid.SetColumnProperty("gvOrderLines", "Description", "MinWidth", 150)
+GUI.FormReturnAndSO.gsgcOrderGrid.SetColumnProperty("gvOrderLines", "Price", "MinWidth", 30)
+GUI.FormReturnAndSO.gsgcOrderGrid.SetColumnProperty("gvOrderLines", "Quantity", "MinWidth", 30)
+GUI.FormReturnAndSO.gsgcOrderGrid.SetColumnProperty("gvOrderLines", "Total", "MinWidth", 30)
+GUI.FormReturnAndSO.gsgcOrderGrid.SetColumnProperty("gvOrderLines", "Reason", "MinWidth", 150)
+GUI.FormReturnAndSO.gsgcOrderGrid.SetColumnProperty("gvOrderLines", "Type", "MinWidth", 80)
+
+GUI.FormReturnAndSO.gsgcOrderGrid.SetColumnProperty("gvOrderLines", "Line", "HeaderHAlignment", "Center")
+GUI.FormReturnAndSO.gsgcOrderGrid.SetColumnProperty("gvOrderLines", "Part", "HeaderHAlignment", "Center")
+GUI.FormReturnAndSO.gsgcOrderGrid.SetColumnProperty("gvOrderLines", "Loc", "HeaderHAlignment", "Center")
+GUI.FormReturnAndSO.gsgcOrderGrid.SetColumnProperty("gvOrderLines", "Description", "HeaderHAlignment", "Center")
+GUI.FormReturnAndSO.gsgcOrderGrid.SetColumnProperty("gvOrderLines", "Price", "HeaderHAlignment", "Center")
+GUI.FormReturnAndSO.gsgcOrderGrid.SetColumnProperty("gvOrderLines", "Quantity", "HeaderHAlignment", "Center")
+GUI.FormReturnAndSO.gsgcOrderGrid.SetColumnProperty("gvOrderLines", "Total", "HeaderHAlignment", "Center")
+GUI.FormReturnAndSO.gsgcOrderGrid.SetColumnProperty("gvOrderLines", "Reason", "HeaderHAlignment", "Center")
+GUI.FormReturnAndSO.gsgcOrderGrid.SetColumnProperty("gvOrderLines", "Type", "HeaderHAlignment", "Center")
+
+GUI.FormReturnAndSO.gsgcOrderGrid.SetColumnProperty("gvOrderLines", "Quantity", "DisplayCustomNumeric", "########0.0000")
+GUI.FormReturnAndSO.gsgcOrderGrid.SetColumnProperty("gvOrderLines", "Price", "DisplayCustomNumeric", "########0.00")
+GUI.FormReturnAndSO.gsgcOrderGrid.SetColumnProperty("gvOrderLines", "Total", "DisplayCustomNumeric", "########0.00")
+
+GUI.FormReturnAndSO.gsgcOrderGrid.AddSummaryItem("gvOrderLines", "Total", "TotalPrice", "Sum", "", "", "c2")
+GUI.FormReturnAndSO.gsgcOrderGrid.SetGridviewProperty("gvOrderLines", "MultiSelect", False)
+
+GUI.FormReturnAndSO.gsgcOrderGrid.MainView("gvOrderLines")
+
+F.Intrinsic.Control.Catch
+	F.Intrinsic.String.Build("Project: {0}{1}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}{1}GAB Version: {5}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.End 
+F.Intrinsic.Control.EndTry
+Program.Sub.LoadGrid.End
+
+Program.Sub.cmdReturn_Click.Start
+F.Intrinsic.Control.Try
+V.Local.sError.Declare
+
+GUI.FormReturnAndSO.txtPrice.BackColor(12632319)
+GUI.FormReturnAndSO.txtQuantity.BackColor(12632319)
+GUI.FormReturnAndSO.txtTotal.BackColor(12632319)
+F.Intrinsic.Control.CallSub(LoadReasonsDDL)
+F.Intrinsic.Control.CallSub(LoadReasonTypes)
+'GUI.FormReturnAndSO.txtPrice.Enabled(V.Global.bReturnPricing)
+V.Global.bPricing.Set(V.Global.bReturnPricing)
+GUI.FormReturnAndSO.frameReturn.Visible(True)
+GUI.FormReturnAndSO.cmdUpload.Caption("Upload Return")
+GUI.FormReturnAndSO..Caption("Returns")
+GUI.FormChoice..Visible(False)
+GUI.FormReturnAndSO..Show
+
+F.Intrinsic.Control.Catch
+	F.Intrinsic.String.Build("Project: {0}{1}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}{1}GAB Version: {5}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.End 
+F.Intrinsic.Control.EndTry
+Program.Sub.cmdReturn_Click.End
+
+Program.Sub.cmdSalesOrder_Click.Start
+F.Intrinsic.Control.Try
+V.Local.sError.Declare
+
+GUI.FormReturnAndSO.txtPrice.BackColor(12648384)
+GUI.FormReturnAndSO.txtQuantity.BackColor(12648384)
+GUI.FormReturnAndSO.txtTotal.BackColor(12648384)
+GUI.FormReturnAndSO.frameReturn.Visible(False)
+'GUI.FormReturnAndSO.txtPrice.Enabled(V.Global.bSOPricing)
+V.Global.bPricing.Set(V.Global.bSOPricing)
+GUI.FormReturnAndSO.cmdUpload.Caption("Upload Order")
+GUI.FormReturnAndSO..Caption("Sales Orders")
+GUI.FormReturnAndSO.gsgcOrderGrid.SetColumnProperty("gvOrderLines", "Reason", "Visible", False)
+GUI.FormReturnAndSO.gsgcOrderGrid.SetColumnProperty("gvOrderLines", "Type", "Visible", False)
+GUI.FormChoice..Visible(False)
+GUI.FormReturnAndSO..Show
+
+F.Intrinsic.Control.Catch
+	F.Intrinsic.String.Build("Project: {0}{1}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}{1}GAB Version: {5}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.End 
+F.Intrinsic.Control.EndTry
+Program.Sub.cmdSalesOrder_Click.End
+
+Program.Sub.FormChoice_UnLoad.Start
+F.Intrinsic.Control.Try
+V.Local.sError.Declare
+
+F.Intrinsic.Control.End
+
+F.Intrinsic.Control.Catch
+	F.Intrinsic.String.Build("Project: {0}{1}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}{1}GAB Version: {5}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.End 
+F.Intrinsic.Control.EndTry
+Program.Sub.FormChoice_UnLoad.End
+
+Program.Sub.FormReturnAndSO_UnLoad.Start
+F.Intrinsic.Control.Try
+V.Local.sError.Declare
+
+F.Intrinsic.Control.End
+
+F.Intrinsic.Control.Catch
+	F.Intrinsic.String.Build("Project: {0}{1}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}{1}GAB Version: {5}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.End 
+F.Intrinsic.Control.EndTry
+Program.Sub.FormReturnAndSO_UnLoad.End
+
+Program.Sub.cmdCustomerBrowser_Click.Start
+F.Intrinsic.Control.Try
+V.Local.sError.Declare
+
+GUI.FormReturnAndSO.cmdCustomerBrowser.Enabled(False)
+
+V.Local.sRet.Declare(String)
+F.Intrinsic.UI.Browser(225, "", V.Local.sRet)
+
+F.Intrinsic.Control.If(V.Local.sRet.IsNotCancel)
+	F.Intrinsic.String.Split(V.Local.sRet, "*!*", V.Local.sRet)
+	GUI.FormReturnAndSO.txtCustomer.Text(V.Local.sRet(0).Trim)
+	GUI.FormReturnAndSO.txtCustomerName.Text(V.Local.sRet(3).Trim)
+	
+	GUI.FormReturnAndSO.ddlShipTo.Enabled(True)
+	GUI.FormReturnAndSO.ddlReturnReason.Enabled(True)
+	GUI.FormReturnAndSO.cmdPartBrowser.Enabled(True)
+	GUI.FormReturnAndSO.cmdCustomerPartBrowser.Enabled(True)
+	'GUI.FormReturnAndSO.txtContract.Enabled(True)
+	GUI.FormReturnAndSO.cmdContractBrowser.Enabled(True)
+	
+	'Also load SHIP to IDs
+	F.Intrinsic.Control.CallSub(LoadShipToDDL)
+	V.Global.sOldCustomer.Set(V.Local.sRet(0))
+	
+F.Intrinsic.Control.EndIf
+
+GUI.FormReturnAndSO.cmdCustomerBrowser.Enabled(True)
+
+F.Intrinsic.Control.Catch
+	F.Intrinsic.String.Build("Project: {0}{1}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}{1}GAB Version: {5}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.End 
+F.Intrinsic.Control.EndTry
+Program.Sub.cmdCustomerBrowser_Click.End
+
+Program.Sub.cmdPartBrowser_Click.Start
+F.Intrinsic.Control.Try
+V.Local.sError.Declare
+
+GUI.FormReturnAndSO.cmdPartBrowser.Enabled(False)
+
+V.Local.sRet.Declare(String)
+V.Local.sSQL.Declare(String)
+V.Local.sSQL.Set("select RTRIM(PART) as Part, RTRIM(LOCATION) as Loc, RTRIM(DESCRIPTION) as Description, RTRIM(PRODUCT_LINE) as PL, AMT_PRICE FROM V_INVENTORY_MSTR")
+F.Intrinsic.Control.If(V.Screen.FormReturnAndSO!ddlLoc.Value.Trim, !=, "", and, V.Screen.FormReturnAndSO!ddlLoc.Value.Trim, !=, "All")
+	F.Intrinsic.String.Build("{0} where LOCATION = '{1}' order by PART", V.Local.sSQL, V.Screen.FormReturnAndSO!ddlLoc.Value.Trim, V.Local.sSQL)
+F.Intrinsic.Control.Else
+	F.Intrinsic.String.Build("{0} order by PART", V.Local.sSQL, V.Local.sSQL)
+F.Intrinsic.Control.EndIf
+F.ODBC.Connection!Con.OpenCompanyConnection
+F.Intrinsic.UI.Browser("Part Browser", "Con", V.Local.sSQL, "Part*!*Loc*!*Description*!*PL*!*Price", "50*!*10*!*100*!*10*!*0", V.Local.sRet)
+F.ODBC.Connection!Con.Close
+
+F.Intrinsic.Control.If(V.Local.sRet.IsNotCancel)
+	F.Intrinsic.String.Split(V.Local.sRet, "*!*", V.Local.sRet)
+	GUI.FormReturnAndSO.txtPartNumber.Text(V.Local.sRet(0).Trim)
+	GUI.FormReturnAndSO.txtPartDescription.Text(V.Local.sRet(2).Trim)
+	F.Intrinsic.String.Format(V.Local.sRet(4).Trim, "########0.00", V.Local.sRet(4))
+	V.Global.fPrice.Set(V.Local.sRet(4).Trim)
+	
+	F.Intrinsic.Control.CallSub(LoadPrice)
+	F.Intrinsic.Control.CallSub(SortQBPricing)
+	
+	GUI.FormReturnAndSO.txtPrice.Text(V.Global.fPrice)
+	
+	F.Intrinsic.Control.If(V.Screen.FormReturnAndSO!ddlLoc.Value.Trim, !=, V.Local.sRet(1).Trim)
+		GUI.FormReturnAndSO.ddlLoc.Text(V.Local.sRet(1).Trim)
+	F.Intrinsic.Control.EndIf
+	
+	V.Global.sOldLoc.Set(V.Local.sRet(1).Trim)
+	
+	GUI.FormReturnAndSO.txtPrice.Enabled(V.Global.bPricing)
+	GUI.FormReturnAndSO.txtQuantity.Enabled(True)
+	GUI.FormReturnAndSO.txtQuantity.SetFocus
+	GUI.FormReturnAndSO.txtQuantity.SelectAll
+F.Intrinsic.Control.EndIf
+
+GUI.FormReturnAndSO.cmdPartBrowser.Enabled(True)
+
+F.Intrinsic.Control.Catch
+	F.Intrinsic.String.Build("Project: {0}{1}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}{1}GAB Version: {5}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.End 
+F.Intrinsic.Control.EndTry
+Program.Sub.cmdPartBrowser_Click.End
+
+Program.Sub.cmdAddLine_Click.Start
+F.Intrinsic.Control.Try
+V.Local.sError.Declare
+
+V.Local.fQuantity.Declare(Float)
+
+V.Global.bQTYBRK.Set(False)
+
+'Check part number
+F.Intrinsic.Control.If(V.Screen.FormReturnAndSO!txtPartNumber.Text.Trim, =, "")
+	F.Intrinsic.UI.Msgbox("Error: Part Number cannot be blank.")
+	F.Intrinsic.Control.ExitSub
+F.Intrinsic.Control.EndIf
+
+'check quantity
+F.Intrinsic.Control.If(V.Screen.FormReturnAndSO!txtQuantity.Text.Trim, =, "")
+	F.Intrinsic.UI.Msgbox("Error: Quantity cannot be blank.")
+	F.Intrinsic.Control.ExitSub
+F.Intrinsic.Control.EndIf
+
+V.Local.fQuantity.Set(V.Screen.FormReturnAndSO!txtQuantity.Text.Trim)
+F.Intrinsic.Control.If(V.Local.fQuantity, =, 0)
+	F.Intrinsic.UI.Msgbox("Error: Quantity cannot be zero.")
+	F.Intrinsic.Control.ExitSub
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.If(V.Screen.FormReturnAndSO!frameReturn.Visible)
+	'check reason
+	F.Intrinsic.Control.If(V.Screen.FormReturnAndSO!ddlReturnReason.Value.Trim, =, "")
+		F.Intrinsic.UI.Msgbox("Error: Return reason cannot be blank.")
+		F.Intrinsic.Control.ExitSub
+	F.Intrinsic.Control.EndIf
+	
+	'add row
+	F.Data.DataTable.AddRow("dtOrderLines", "Line", V.Global.iLine, "Part", V.Screen.FormReturnAndSO!txtPartNumber.Text.Trim, "Loc", V.Screen.FormReturnAndSO!ddlLoc.Value.Trim, "Description", V.Screen.FormReturnAndSO!txtPartDescription.Text.Trim, "Price", V.Screen.FormReturnAndSO!txtPrice.Text.Trim, "Quantity", V.Screen.FormReturnAndSO!txtQuantity.Text.Trim, "Total", V.Screen.FormReturnAndSO!txtTotal.Text.Trim, "Reason", V.Screen.FormReturnAndSO!ddlReturnReason.Value.Trim, "Type", V.Screen.FormReturnAndSO!txtType.Text.Trim)
+F.Intrinsic.Control.Else
+	F.Data.DataTable.AddRow("dtOrderLines", "Line", V.Global.iLine, "Part", V.Screen.FormReturnAndSO!txtPartNumber.Text.Trim, "Loc", V.Screen.FormReturnAndSO!ddlLoc.Value.Trim, "Description", V.Screen.FormReturnAndSO!txtPartDescription.Text.Trim, "Price", V.Screen.FormReturnAndSO!txtPrice.Text.Trim, "Quantity", V.Screen.FormReturnAndSO!txtQuantity.Text.Trim, "Total", V.Screen.FormReturnAndSO!txtTotal.Text.Trim)
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Math.Add(V.Global.iLine, 1, V.Global.iLine)
+
+'Clear fields
+F.Intrinsic.Control.CallSub(ClearFieldsLine)
+
+GUI.FormReturnAndSO.cmdUpload.Enabled(True)
+
+GUI.FormReturnAndSO.cmdPartBrowser.SetFocus
+
+F.Intrinsic.Control.Catch
+	F.Intrinsic.String.Build("Project: {0}{1}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}{1}GAB Version: {5}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.End 
+F.Intrinsic.Control.EndTry
+Program.Sub.cmdAddLine_Click.End
+
+Program.Sub.cmdUpload_Click.Start
+F.Intrinsic.Control.Try
+V.Local.sError.Declare
+
+'build file, upload file
+GUI.FormReturnAndSO..Enabled(False)
+GUI.FormReturnAndSO.cmdUpload.Enabled(False)
+
+V.Local.sShipTo.Declare(String)
+V.Local.sUserID.Declare(String)
+V.Local.iCounter.Declare(Long)
+V.Local.sQty.Declare(String)
+V.Local.sPrice.Declare(String)
+V.Local.sType.Declare(String)
+V.Local.sPart.Declare(String)
+V.Local.sID.Declare(String)
+V.Local.sSQL.Declare(String)
+V.Local.sRet.Declare(String)
+V.Local.sMessage.Declare(String)
+V.Local.sDesc.Declare(String)
+V.Local.sN.Declare(String)
+
+'get ship to ID
+V.Local.sShipTo.Set(V.Screen.FormReturnAndSO!ddlShipTo.Value.Trim)
+F.Intrinsic.String.Split(V.Local.sShipTo, "-", V.Local.sShipTo)
+F.Global.Security.GetUserId(V.Caller.User, V.Caller.CompanyCode, V.Local.sUserID)
+
+'add header row and extra row
+F.Data.DataTable.AddRow("ORDUPL", "Transaction", "O", "CustomerNo", V.Screen.FormReturnAndSO!txtCustomer.Text.Trim, "OrderNumber", , "UserID", V.Local.sUserID.Trim, "OrderType", " ", "ShipToID", V.Local.sShipTo(0).Trim)
+F.Data.DataTable.AddRow("ORDUPLExtra")
+
+'loop through and add lines
+F.Intrinsic.Control.For(V.Local.iCounter, 0, V.DataTable.dtOrderLines.RowCount--, 1)
+	
+	V.Local.sQty.Set(V.DataTable.dtOrderLines(V.Local.iCounter).QUANTITY!FieldVal)
+	F.Intrinsic.String.Split(V.Local.sQty, ".", V.Local.sQty)
+	'if no decimal, account for that
+	F.Intrinsic.Control.If(V.Local.sQty.UBound, =, 0)
+		F.Intrinsic.String.LPad(V.Local.sQty.Trim, "0", 9, V.Local.sQty)
+		F.Intrinsic.String.RPad(V.Local.sQty.Trim, "0", 13, V.Local.sQty)
+	F.Intrinsic.Control.Else
+		F.Intrinsic.String.LPad(V.Local.sQty(0).Trim, "0", 9, V.Local.sQty(0))
+		F.Intrinsic.String.RPad(V.Local.sQty(1).Trim, "0", 4, V.Local.sQty(1))
+		F.Intrinsic.String.Join(V.Local.sQty, "", V.Local.sQty)
+	F.Intrinsic.Control.EndIf
+	V.Local.sQty.RedimPreserve(0)
+	
+	V.Local.sPrice.Set(V.DataTable.dtOrderLines(V.Local.iCounter).Price!FieldVal)
+	F.Intrinsic.String.Split(V.Local.sPrice, ".", V.Local.sPrice)
+	'if no decimal, account for that
+	F.Intrinsic.Control.If(V.Local.sPrice.UBound, =, 0)
+		F.Intrinsic.String.LPad(V.Local.sPrice.Trim, "0", 10, V.Local.sPrice)
+		F.Intrinsic.String.RPad(V.Local.sPrice.Trim, "0", 16, V.Local.sPrice)
+	F.Intrinsic.Control.Else
+		F.Intrinsic.String.LPad(V.Local.sPrice(0).Trim, "0", 10, V.Local.sPrice(0))
+		F.Intrinsic.String.RPad(V.Local.sPrice(1).Trim, "0", 6, V.Local.sPrice(1))
+		F.Intrinsic.String.Join(V.Local.sPrice, "", V.Local.sPrice)
+	F.Intrinsic.Control.EndIf
+	V.Local.sPrice.RedimPreserve(0)
+
+	V.Local.sType.Set(V.DataTable.dtOrderLines(V.Local.iCounter).Type!FieldValTrim)
+	V.Local.sPart.Set(V.DataTable.dtOrderLines(V.Local.iCounter).Part!FieldValTrim)
+	V.Local.sDesc.Set(V.DataTable.dtOrderLines(V.Local.iCounter).Description!FieldValTrim)
+	
+'	V.Local.sN.Set(V.ASCII.164)
+'	F.Intrinsic.String.Replace(V.Local.sDesc, V.Local.sN, "n", V.Local.sDesc)
+'	V.Local.sN.Set(V.ASCII.165)
+'	F.Intrinsic.String.Replace(V.Local.sDesc, V.Local.sN, "N", V.Local.sDesc)
+'	F.Intrinsic.String.Replace(V.Local.sDesc, "?", "N", V.Local.sDesc)
+'	F.Intrinsic.String.Replace(V.Local.sDesc, "?", "n", V.Local.sDesc)
+'	F.Intrinsic.String.DecodeUTF8("\xC3", V.Local.sN)
+'	F.Intrinsic.String.Replace(V.Local.sDesc, V.Local.sN, "N", V.Local.sDesc)
+'	F.Intrinsic.String.DecodeUTF8("\xB1", V.Local.sN)
+'	F.Intrinsic.String.Replace(V.Local.sDesc, V.Local.sN, "n", V.Local.sDesc)
+	
+	'add row, return / SO
+	F.Intrinsic.Control.If(V.Screen.FormReturnAndSO!frameReturn.Visible)
+		'F.Data.DataTable.AddRow("ORDUPLLines", "LineNumber", V.DataTable.dtOrderLines(V.Local.iCounter).Line!FieldVal, "QtyOrdered", V.Local.sQty, "QuotedPrice", V.Local.sPrice, "UserField1", V.DataTable.dtOrderLines(V.Local.iCounter).Reason!FieldValTrim, "PartNumber", V.Local.sPart.Left17, "PartLoc", V.DataTable.dtOrderLines(V.Local.iCounter).Loc!FieldValTrim, "PartDesc", V.DataTable.dtOrderLines(V.Local.iCounter).Description!FieldValTrim, "LineType", V.Local.sType, "NegativeFlag", 1, "PartRev", V.Local.sPart.Right3)
+		F.Data.DataTable.AddRow("ORDUPLLines", "LineNumber", V.DataTable.dtOrderLines(V.Local.iCounter).Line!FieldVal, "QtyOrdered", V.Local.sQty, "QuotedPrice", V.Local.sPrice, "UserField1", V.DataTable.dtOrderLines(V.Local.iCounter).Reason!FieldValTrim, "PartNumber", V.Local.sPart.Trim, "PartLoc", V.DataTable.dtOrderLines(V.Local.iCounter).Loc!FieldValTrim, "PartDesc", V.Local.sDesc, "LineType", V.Local.sType, "NegativeFlag", 1)
+		'F.Data.DataTable.AddRow("ORDUPLLines", "LineNumber", V.DataTable.dtOrderLines(V.Local.iCounter).Line!FieldVal, "QtyOrdered", V.Local.sQty, "QuotedPrice", V.Local.sPrice, "UserField1", V.DataTable.dtOrderLines(V.Local.iCounter).Reason!FieldValTrim, "PartNumber", V.Local.sPart.Trim, "PartLoc", V.DataTable.dtOrderLines(V.Local.iCounter).Loc!FieldValTrim, "LineType", V.Local.sType, "NegativeFlag", 1)
+	F.Intrinsic.Control.Else
+		'F.Data.DataTable.AddRow("ORDUPLLines", "LineNumber", V.DataTable.dtOrderLines(V.Local.iCounter).Line!FieldVal, "QtyOrdered", V.Local.sQty, "QuotedPrice", V.Local.sPrice, "PartNumber", V.Local.sPart.Left17, "PartLoc", V.DataTable.dtOrderLines(V.Local.iCounter).Loc!FieldValTrim, "PartDesc", V.DataTable.dtOrderLines(V.Local.iCounter).Description!FieldValTrim, "LineType", "S", "PartRev", V.Local.sPart.Right3)
+		F.Data.DataTable.AddRow("ORDUPLLines", "LineNumber", V.DataTable.dtOrderLines(V.Local.iCounter).Line!FieldVal, "QtyOrdered", V.Local.sQty, "QuotedPrice", V.Local.sPrice, "PartNumber", V.Local.sPart.Trim, "PartLoc", V.DataTable.dtOrderLines(V.Local.iCounter).Loc!FieldValTrim, "PartDesc", V.Local.sDesc, "LineType", "S")
+		'F.Data.DataTable.AddRow("ORDUPLLines", "LineNumber", V.DataTable.dtOrderLines(V.Local.iCounter).Line!FieldVal, "QtyOrdered", V.Local.sQty, "QuotedPrice", V.Local.sPrice, "PartNumber", V.Local.sPart.Trim, "PartLoc", V.DataTable.dtOrderLines(V.Local.iCounter).Loc!FieldValTrim, "LineType", "S")
+	F.Intrinsic.Control.EndIf
+F.Intrinsic.Control.Next(V.Local.iCounter)
+
+'Check params file, create file, upload
+F.Intrinsic.Control.CallSub(SaveNewOrderNumber)
+V.Local.sID.Set(V.Args.ID.Trim)
+F.Intrinsic.Control.CallSub(CheckParamsTxt)
+F.Intrinsic.Control.CallSub(ORDUPLCreateFile)
+'F.Intrinsic.Control.CallSub(ORDUPLSync)
+F.Intrinsic.Control.CallSub(ORDUPLAsync)
+
+F.Intrinsic.Control.CallSub(ClearFields)
+Gui.FormReturnAndSO.cmdPartBrowser.Enabled(False)
+GUI.FormReturnAndSO.cmdCustomerPartBrowser.Enabled(False)
+Gui.FormReturnAndSO.cmdAddLine.Enabled(False)
+Gui.FormReturnAndSO.ddlShipTo.Enabled(False)
+Gui.FormReturnAndSO.ddlReturnReason.Enabled(False)
+
+'F.ODBC.Connection!ConCheck.OpenCompanyConnection
+'F.Intrinsic.String.Build("select RTRIM(ORDER_NO) as ORDER_NO from V_ORDER_HEADER where USER_2 = '{0}'", V.Local.sID, V.Local.sSQL)
+'F.ODBC.Connection!ConCheck.ExecuteAndReturn(V.Local.sSQL, V.Local.sRet)
+'F.ODBC.Connection!ConCheck.Close
+
+'F.Intrinsic.Control.If(V.Ambient.ExecuteAndReturnEOF)
+'	F.Intrinsic.String.Build("The webimporter failed to upload the order, check {0}\ORDUP{1}.ERR for details.", V.Caller.FilesDir, V.Caller.CompanyCode, V.Local.sMessage)
+'F.Intrinsic.Control.Else
+'	F.Intrinsic.String.Build("Order {0} successfully uploaded.", V.Local.sRet, V.Local.sMessage)
+'F.Intrinsic.Control.EndIf
+V.Local.sMessage.Set("Order successfully uploaded")
+F.Intrinsic.UI.Msgbox(V.Local.sMessage)
+GUI.FormReturnAndSO..Enabled(True)
+
+GUI.FormReturnAndSO.txtCustomer.SetFocus
+
+F.Intrinsic.Control.Catch
+	F.Intrinsic.String.Build("Project: {0}{1}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}{1}GAB Version: {5}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.End 
+F.Intrinsic.Control.EndTry
+Program.Sub.cmdUpload_Click.End
+
+Program.Sub.cmdExit_Click.Start
+F.Intrinsic.Control.Try
+V.Local.sError.Declare
+
+F.Intrinsic.Control.CallSub(ClearFields)
+F.Intrinsic.Control.CallSub(DisableAll)
+F.Data.DataTable.DeleteRow("dtOrderLines")
+F.Data.DataTable.AcceptChanges("dtOrderLines")
+F.Intrinsic.Control.If(V.Screen.FormReturnAndSO!frameReturn.Visible)
+	F.Data.Dictionary.Close("dcReasonTypes")
+F.Intrinsic.Control.EndIf
+
+GUI.FormReturnAndSO..Visible(False)
+GUI.FormChoice..Visible(True)
+
+F.Intrinsic.Control.Catch
+	F.Intrinsic.String.Build("Project: {0}{1}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}{1}GAB Version: {5}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.End 
+F.Intrinsic.Control.EndTry
+Program.Sub.cmdExit_Click.End
+
+Program.Sub.ClearFieldsLine.Start
+F.Intrinsic.Control.Try
+V.Local.sError.Declare
+
+GUI.FormReturnAndSO.txtPartDescription.Text("")
+GUI.FormReturnAndSO.txtPartNumber.Text("")
+GUI.FormReturnAndSO.txtPrice.Text("")
+GUI.FormReturnAndSO.txtQuantity.Text("")
+GUI.FormReturnAndSO.ddlReturnReason.ListIndex(-1)
+GUI.FormReturnAndSO.txtType.Text("")
+GUI.FormReturnAndSO.txtTotal.Text("")
+GUI.FormReturnAndSO.txtCustomerPart.Text("")
+
+'their contract pricing is done at the line level
+GUI.FormReturnAndSO.txtContract.Text("")
+V.Global.sOldContract.Set("")
+
+F.Intrinsic.Control.If(V.DataTable.dtPrice.Exists)
+	F.Data.DataTable.Close("dtPrice")
+F.Intrinsic.Control.EndIf
+
+V.Global.bQTYBRK.Set(False)
+
+GUI.FormReturnAndSO.cmdAddLine.Enabled(False)
+GUI.FormReturnAndSO.cmdAddLine.Caption("Add Line")
+
+F.Intrinsic.Control.Catch
+	F.Intrinsic.String.Build("Project: {0}{1}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}{1}GAB Version: {5}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.End 
+F.Intrinsic.Control.EndTry
+Program.Sub.ClearFieldsLine.End
+
+Program.Sub.ClearFields.Start
+F.Intrinsic.Control.Try
+V.Local.sError.Declare
+
+F.Intrinsic.Control.CallSub(ClearFieldsLine)
+
+GUI.FormReturnAndSO.txtCustomer.Text("")
+V.Global.sOldCustomer.Set("")
+GUI.FormReturnAndSO.txtCustomerName.Text("")
+GUI.FormReturnAndSO.ddlShipTo.ListIndex(-1)
+'GUI.FormReturnAndSO.ddlLoc.ListIndex(-1)
+GUI.FormReturnAndSO.txtTotal.Text("")
+
+V.Global.iLine.Set(1)
+F.Data.DataTable.DeleteRow("dtOrderLines")
+F.Data.DataTable.AcceptChanges("dtOrderLines")
+
+F.Intrinsic.Control.Catch
+	F.Intrinsic.String.Build("Project: {0}{1}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}{1}GAB Version: {5}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.End 
+F.Intrinsic.Control.EndTry
+Program.Sub.ClearFields.End
+
+Program.Sub.DisableAll.Start
+F.Intrinsic.Control.Try
+V.Local.sError.Declare
+
+GUI.FormReturnAndSO.cmdPartBrowser.Enabled(False)
+GUI.FormReturnAndSO.cmdCustomerPartBrowser.Enabled(False)
+GUI.FormReturnAndSO.ddlShipTo.Enabled(False)
+GUI.FormReturnAndSO.ddlReturnReason.Enabled(False)
+GUI.FormReturnAndSO.txtQuantity.Enabled(False)
+GUI.FormReturnAndSO.txtPrice.Enabled(False)
+GUI.FormReturnAndSO.cmdAddLine.Enabled(False)
+GUI.FormReturnAndSO.cmdUpload.Enabled(False)
+GUI.FormReturnAndSO.txtContract.Enabled(False)
+GUI.FormReturnAndSO.cmdContractBrowser.Enabled(False)
+
+F.Intrinsic.Control.Catch
+	F.Intrinsic.String.Build("Project: {0}{1}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}{1}GAB Version: {5}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.End 
+F.Intrinsic.Control.EndTry
+Program.Sub.DisableAll.End
+
+Program.Sub.LoadShipToDDL.Start
+F.Intrinsic.Control.Try
+V.Local.sError.Declare
+
+GUI.FormReturnAndSO.ddlShipTo.ClearItems
+V.Local.sSQL.Declare(String)
+F.Intrinsic.String.Build("select RTRIM(SHIP_SEQ) as SHIPTO, RTRIM(SHIP_SEQ) + ' - ' + RTRIM(CUSTOMER_NAME) as SHIPNAME from V_OE_MULTI_SHIP where CUSTOMER = '{0}' order by SHIP_SEQ", V.Screen.FormReturnAndSO!txtCustomer.Text.Trim, V.Local.sSQL)
+F.ODBC.Connection!Con.OpenCompanyConnection
+F.Data.Dictionary.CreateFromSQL("dictShipTo", "Con", V.Local.sSQL)
+GUI.FormReturnAndSO.ddlShipTo.AddItems("Dictionary", "dictShipTo")
+F.Data.Dictionary.Close("dictShipTo")
+F.ODBC.Connection!Con.Close
+
+F.Intrinsic.Control.Catch
+	F.Intrinsic.String.Build("Project: {0}{1}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}{1}GAB Version: {5}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.End 
+F.Intrinsic.Control.EndTry
+Program.Sub.LoadShipToDDL.End
+
+Program.Sub.LoadReasonsDDL.Start
+F.Intrinsic.Control.Try
+V.Local.sError.Declare
+
+GUI.FormReturnAndSO.ddlReturnReason.ClearItems
+V.Local.sRet.Declare(String)
+V.Local.iCounter.Declare(Long)
+
+F.ODBC.Connection!Con.OpenCompanyConnection
+F.ODBC.Connection!Con.ExecuteAndReturn("select RTRIM(KEY_VALUE) from V_OE_USER_VALUES where CUST = '' and PART = ''", V.Local.sRet)
+F.ODBC.Connection!Con.Close
+
+F.Intrinsic.String.Split(V.Local.sRet, "#$#", V.Local.sRet)
+F.Intrinsic.Control.For(V.Local.iCounter, 0, V.Local.sRet.UBound, 1)
+	GUI.FormReturnAndSO.ddlReturnReason.AddItem(V.Local.sRet(V.Local.iCounter).Trim)
+F.Intrinsic.Control.Next(V.Local.iCounter)
+
+F.Intrinsic.Control.Catch
+	F.Intrinsic.String.Build("Project: {0}{1}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}{1}GAB Version: {5}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.End 
+F.Intrinsic.Control.EndTry
+Program.Sub.LoadReasonsDDL.End
+
+Program.Sub.txtPrice_Change.Start
+F.Intrinsic.Control.Try
+V.Local.sError.Declare
+
+V.Local.fPrice.Declare(Float)
+V.Local.fQuantity.Declare(Float)
+V.Local.fTotal.Declare(Float)
+V.Local.fPrice.Set(V.Screen.FormReturnAndSO!txtPrice.Text.Trim)
+V.Local.fQuantity.Set(V.Screen.FormReturnAndSO!txtQuantity.Text.Trim)
+
+F.Intrinsic.Math.Mult(V.Local.fPrice, V.Local.fQuantity, V.Local.fTotal)
+
+GUI.FormReturnAndSO.txtTotal.Text(V.Local.fTotal)
+
+F.Intrinsic.Control.Catch
+	F.Intrinsic.String.Build("Project: {0}{1}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}{1}GAB Version: {5}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.End 
+F.Intrinsic.Control.EndTry
+Program.Sub.txtPrice_Change.End
+
+Program.Sub.txtQuantity_Change.Start
+F.Intrinsic.Control.Try
+V.Local.sError.Declare
+
+F.Intrinsic.Control.If(V.Global.bQTYBRK)
+	F.Intrinsic.Control.CallSub(QuantityPricing)
+F.Intrinsic.Control.Else
+	F.Intrinsic.Control.CallSub(txtPrice_Change)
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.If(V.Screen.FormReturnAndSO!frameReturn.Visible.Not)
+	GUI.FormReturnAndSO.cmdAddLine.Enabled(True)
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.Catch
+	F.Intrinsic.String.Build("Project: {0}{1}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}{1}GAB Version: {5}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.End 
+F.Intrinsic.Control.EndTry
+Program.Sub.txtQuantity_Change.End
+
+Program.Sub.txtQuantity_LostFocus.Start
+F.Intrinsic.Control.Try
+V.Local.sError.Declare
+
+V.Local.sTemp.Declare(String)
+F.Intrinsic.String.Format(V.Screen.FormReturnAndSO!txtQuantity.Text.Trim, "#######0.0000", V.Local.sTemp)
+GUI.FormReturnAndSO.txtQuantity.Text(V.Local.sTemp)
+
+'F.Intrinsic.Control.If(V.Screen.FormReturnAndSO!frameReturn.Visible)
+'	GUI.FormReturnAndSO.ddlReturnReason.SetFocus
+'F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.Catch
+	F.Intrinsic.String.Build("Project: {0}{1}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}{1}GAB Version: {5}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.End 
+F.Intrinsic.Control.EndTry
+Program.Sub.txtQuantity_LostFocus.End
+
+Program.Sub.txtPrice_LostFocus.Start
+F.Intrinsic.Control.Try
+V.Local.sError.Declare
+
+V.Local.sTemp.Declare(String)
+F.Intrinsic.String.Format(V.Screen.FormReturnAndSO!txtPrice.Text.Trim, "#######0.00", V.Local.sTemp)
+GUI.FormReturnAndSO.txtPrice.Text(V.Local.sTemp)
+'GUI.FormReturnAndSO.txtQuantity.SetFocus
+
+F.Intrinsic.Control.Catch
+	F.Intrinsic.String.Build("Project: {0}{1}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}{1}GAB Version: {5}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.End 
+F.Intrinsic.Control.EndTry
+Program.Sub.txtPrice_LostFocus.End
+
+Program.Sub.txtTotal_Change.Start
+F.Intrinsic.Control.Try
+V.Local.sError.Declare
+
+V.Local.sTemp.Declare(String)
+F.Intrinsic.String.Format(V.Screen.FormReturnAndSO!txtTotal.Text.Trim, "#######0.00", V.Local.sTemp)
+GUI.FormReturnAndSO.txtTotal.Text(V.Local.sTemp)
+
+F.Intrinsic.Control.Catch
+	F.Intrinsic.String.Build("Project: {0}{1}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}{1}GAB Version: {5}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.End 
+F.Intrinsic.Control.EndTry
+Program.Sub.txtTotal_Change.End
+
+Program.Sub.LoadPrice.Start
+F.Intrinsic.Control.Try
+V.Local.sError.Declare
+
+'Get the part price using the price hierarchy
+
+V.Local.sSQL.Declare(String)
+V.Local.sRet.Declare(String)
+V.Local.iCounter.Declare(Long)
+V.Local.iTemp.Declare(Long)
+V.Local.fTemp.Declare(Float)
+V.Local.sGroupRet.Declare(String)
+V.Local.sShipToSplit.Declare(String)
+V.Local.sShipTo.Declare(String)
+
+F.ODBC.Connection!Con.OpenCompanyConnection
+'check contract pricing
+F.Intrinsic.Control.If(V.Screen.FormReturnAndSO!txtContract.Text.Trim, !=, "")
+	'fionish all this
+	F.Intrinsic.String.Split(V.Screen.FormReturnAndSO!ddlShipTo.Text.Trim, " - ", V.Local.sShipToSplit)
+	F.Intrinsic.Control.If(V.Local.sShipToSplit.UBound, =, 0)
+		V.Local.sShipTo.Set(V.Local.sShipToSplit)
+	F.Intrinsic.Control.Else
+		V.Local.sShipTo.Set(V.Local.sShipToSplit(0))
+	F.Intrinsic.Control.EndIf
+	
+	F.Intrinsic.String.Build("select RTRIM(PRICING_METHOD) as PRICING_METHOD, PRICE from OE_K_PRICE where CUSTOMER = '{0}' and SHIP_SEQ = '{1}' and CONTRACT = '{2}' and PART = '{3}' and LOCATION = '{4}'", V.Screen.FormReturnAndSO!txtCustomer.Text.Trim, V.Local.sShipTo.Trim, V.Screen.FormReturnAndSO!txtContract.Text.Trim, V.Screen.FormReturnAndSO!txtPartNumber.Text.Trim, V.Screen.FormReturnAndSO!ddlLoc.Text.Trim, V.Local.sSQL)
+	F.ODBC.Connection!Con.ExecuteAndReturn(V.Local.sSQL, V.Local.sRet)
+	F.Intrinsic.Control.If(V.Ambient.ExecuteAndReturnEOF.Not)
+		F.Intrinsic.String.Split(V.Local.sRet, "*!*", V.Local.sRet)
+		
+		F.Intrinsic.Control.If(V.Local.sRet(0).Trim, =, "QB")
+			V.Global.bQTYBRK.Set(True)
+			F.Intrinsic.String.Build("select QB_QTY_1, PRICE_1, QB_QTY_2, PRICE_2, QB_QTY_3, PRICE_3, QB_QTY_4, PRICE_4, QB_QTY_5, PRICE_5, QB_QTY_6, PRICE_6, QB_QTY_7, PRICE_7, QB_QTY_8, PRICE_8, QB_QTY_9, PRICE_9, QB_QTY_10, PRICE_10 from V_OE_K_P_BREAK where CUSTOMER = '{0}' and SHIPID = '{1}' and CONTRACT = '{2}' and PART = '{3}' and LOCATION = '{4}'", V.Screen.FormReturnAndSO!txtCustomer.Text.Trim, V.Local.sShipTo.Trim, V.Screen.FormReturnAndSO!txtContract.Text.Trim, V.Screen.FormReturnAndSO!txtPartNumber.Text.Trim, V.Screen.FormReturnAndSO!ddlLoc.Text.Trim, V.Local.sSQL)
+			F.ODBC.Connection!Con.ExecuteAndReturn(V.Local.sSQL, V.Local.sRet)
+			F.Intrinsic.String.Split(V.Local.sRet, "*!*", V.Local.sRet)
+			
+			F.Data.DataTable.Create("dtPriceTemp", True)
+			F.Data.DataTable.AddColumn("dtPriceTemp","Quantity", "Float")
+			F.Data.DataTable.AddColumn("dtPriceTemp", "Price", "Float")
+			
+			F.Intrinsic.Control.For(V.Local.iCounter, 0, 18, 2)
+				F.Intrinsic.Math.Add(V.Local.iCounter, 1, V.Local.iTemp)
+				V.Local.fTemp.Set(V.Local.sRet(V.Local.iCounter).Trim)
+				F.Intrinsic.Control.If(V.Local.fTemp, !=, 0)
+					F.Data.DataTable.AddRow("dtPriceTemp", "Quantity", V.Local.sRet(V.Local.iCounter), "Price", V.Local.sRet(V.Local.iTemp))
+				F.Intrinsic.Control.EndIf
+			F.Intrinsic.Control.Next(V.Local.iCounter)
+			
+			F.Intrinsic.UI.Msgbox("There is Contract quantity pricing for this contract and part. The price will change depending on the quantity.")
+		F.Intrinsic.Control.Else
+			'flat fee
+			V.Global.fPrice.Set(v.Local.sRet(1))
+		F.Intrinsic.Control.EndIf
+		
+		F.ODBC.Connection!Con.Close
+		F.Intrinsic.Control.ExitSub
+	F.Intrinsic.Control.EndIf
+F.Intrinsic.Control.EndIf
+
+'check Contract (Part) Pricing
+F.Intrinsic.String.Build("select Price from V_OE_C_PART_PRICE where KEY_TYPE = 'CP' and CUSTOMER = '{0}' and PART = '{1}' and LOCATION = '{2}' and DATE_EFFECTIVE < '{3}'", V.Screen.FormReturnAndSO!txtCustomer.Text.Trim, V.Screen.FormReturnAndSO!txtPartNumber.Text.Trim, V.Screen.FormReturnAndSO!ddlLoc.Value.Trim, V.Ambient.Date.FormatYYYY-MM-DD, V.Local.sSQL)
+
+F.ODBC.Connection!Con.ExecuteAndReturn(V.Local.sSQL, V.Local.sRet)
+F.Intrinsic.Control.If(V.Ambient.ExecuteAndReturnEOF.Not)
+	V.Global.fPrice.Set(V.Local.sRet)
+	F.ODBC.Connection!Con.Close
+	F.Intrinsic.Control.ExitSub
+F.Intrinsic.Control.EndIf
+
+'Check Contract PArt QTY BREAK Pricing
+F.Intrinsic.String.Build("select QB_QTY_1, PRICE_1, QB_QTY_2, PRICE_2, QB_QTY_3, PRICE_3, QB_QTY_4, PRICE_4, QB_QTY_5, PRICE_5, QB_QTY_6, PRICE_6, QB_QTY_7, PRICE_7, QB_QTY_8, PRICE_8, QB_QTY_9, PRICE_9, QB_QTY_10, PRICE_10 from V_OE_C_PART_P_BRK where KEY_TYPE = 'CP' and CUSTOMER = '{0}' and PART = '{1}' and LOCATION = '{2}' and DATE_EFFECTIVE < '{3}'", V.Screen.FormReturnAndSO!txtCustomer.Text.Trim, V.Screen.FormReturnAndSO!txtPartNumber.Text.Trim, V.Screen.FormReturnAndSO!ddlLoc.Value.Trim, V.Ambient.Date.FormatYYYY-MM-DD, V.Local.sSQL)
+F.ODBC.Connection!Con.ExecuteAndReturn(V.Local.sSQL, V.Local.sRet)
+F.Intrinsic.Control.If(V.Ambient.ExecuteAndReturnEOF.Not)
+	F.ODBC.Connection!Con.Close
+	'Create a dictionary to deal with price
+	V.Global.bQTYBRK.Set(True)
+	F.Intrinsic.String.Split(V.Local.sRet, "*!*", V.Local.sRet)
+	F.Data.DataTable.Create("dtPriceTemp", True)
+	F.Data.DataTable.AddColumn("dtPriceTemp","Quantity", "Float")
+	F.Data.DataTable.AddColumn("dtPriceTemp", "Price", "Float")
+	
+	F.Intrinsic.Control.For(V.Local.iCounter, 0, 18, 2)
+		F.Intrinsic.Math.Add(V.Local.iCounter, 1, V.Local.iTemp)
+		V.Local.fTemp.Set(V.Local.sRet(V.Local.iCounter).Trim)
+		F.Intrinsic.Control.If(V.Local.fTemp, !=, 0)
+			F.Data.DataTable.AddRow("dtPriceTemp", "Quantity", V.Local.sRet(V.Local.iCounter), "Price", V.Local.sRet(V.Local.iTemp))
+		F.Intrinsic.Control.EndIf
+	F.Intrinsic.Control.Next(V.Local.iCounter)
+	
+	F.Intrinsic.UI.Msgbox("There is Contract Part quantity pricing for this customer and part. The price will change depending on the quantity.")
+	F.Intrinsic.Control.ExitSub
+F.Intrinsic.Control.EndIf
+
+'check group pricing
+'Primary and secondary group pricing, either can be QTY_Breaks
+F.Intrinsic.String.Build("select PRIMARY_GROUP, SECONDARY_GROUP from V_CUST_FORM_INFO where CUSTOMER = '{0}'", V.Screen.FormReturnAndSO!txtCustomer.Text.Trim, V.Local.sSQL)
+F.ODBC.Connection!Con.ExecuteAndReturn(V.Local.sSQL, V.Local.sRet)
+
+F.Intrinsic.Control.If(V.Ambient.ExecuteAndReturnEOF.Not)
+	F.Intrinsic.String.Split(V.Local.sRet, "*!*", V.Local.sRet)
+	
+	'check primary group
+	F.Intrinsic.Control.If(V.Local.sRet(0).Trim, !=, "")
+		F.Intrinsic.String.Build("select RTRIM(PRC_METHOD) as PRC_METHOD, FF_PRICE, QB_QTY_1, QB_PRICE_1, QB_QTY_2, QB_PRICE_2, QB_QTY_3, QB_PRICE_3, QB_QTY_4, QB_PRICE_4, QB_QTY_5, QB_PRICE_5, QB_QTY_6, QB_PRICE_6, QB_QTY_7, QB_PRICE_7, QB_QTY_8, QB_PRICE_8, QB_QTY_9, QB_PRICE_9, QB_QTY_10, QB_PRICE_10 from V_OE_GRP_PRICING where CD = '{0}' and PART = '{1}'", V.Local.sRet(0).Trim, V.Screen.FormReturnAndSO!txtPartNumber.Text.Trim, V.Local.sSQL)
+		F.ODBC.Connection!Con.ExecuteAndReturn(V.Local.sSQL, V.Local.sGroupRet)
+		
+		F.Intrinsic.Control.If(V.Ambient.ExecuteAndReturnEOF.Not)
+			F.ODBC.Connection!Con.Close
+			F.Intrinsic.String.Split(V.Local.sGroupRet, "*!*", V.Local.sGroupRet)
+			
+			'if it's a flat fee, set it, if it's a quantity break, build the table
+			F.Intrinsic.Control.If(V.Local.sGroupRet(0).Trim, =, "FF")
+				V.Global.fPrice.Set(V.Local.sGroupRet(1))				
+			F.Intrinsic.Control.Else
+				V.Global.bQTYBRK.Set(True)
+			
+				F.Data.DataTable.Create("dtPriceTemp", True)
+				F.Data.DataTable.AddColumn("dtPriceTemp","Quantity", "Float")
+				F.Data.DataTable.AddColumn("dtPriceTemp", "Price", "Float")
+
+				F.Intrinsic.Control.For(V.Local.iCounter, 2, 20, 2)
+					F.Intrinsic.Math.Add(V.Local.iCounter, 1, V.Local.iTemp)
+					V.Local.fTemp.Set(V.Local.sGroupRet(V.Local.iCounter).Trim)
+					F.Intrinsic.Control.If(V.Local.fTemp, !=, 0)
+						F.Data.DataTable.AddRow("dtPriceTemp", "Quantity", V.Local.sGroupRet(V.Local.iCounter), "Price", V.Local.sGroupRet(V.Local.iTemp))
+					F.Intrinsic.Control.EndIf
+				F.Intrinsic.Control.Next(V.Local.iCounter)
+				F.Intrinsic.UI.Msgbox("There is group part quantity pricing for this customer and part. The price will change depending on the quantity.")
+			F.Intrinsic.Control.EndIf
+			
+			
+		F.Intrinsic.Control.ExitSub
+		F.Intrinsic.Control.EndIf
+		
+	F.Intrinsic.Control.EndIf
+	
+	'check secondary group
+	F.Intrinsic.Control.If(V.Local.sRet(1).Trim, !=, "")
+		F.Intrinsic.String.Build("select RTRIM(PRC_METHOD) as PRC_METHOD, FF_PRICE, QB_QTY_1, QB_PRICE_1, QB_QTY_2, QB_PRICE_2, QB_QTY_3, QB_PRICE_3, QB_QTY_4, QB_PRICE_4, QB_QTY_5, QB_PRICE_5, QB_QTY_6, QB_PRICE_6, QB_QTY_7, QB_PRICE_7, QB_QTY_8, QB_PRICE_8, QB_QTY_9, QB_PRICE_9, QB_QTY_10, QB_PRICE_10 from V_OE_GRP_PRICING where CD = '{0}' and PART = '{1}'", V.Local.sRet(1).Trim, V.Screen.FormReturnAndSO!txtPartNumber.Text.Trim, V.Local.sSQL)
+		F.ODBC.Connection!Con.ExecuteAndReturn(V.Local.sSQL, V.Local.sGroupRet)
+		
+		F.Intrinsic.Control.If(V.Ambient.ExecuteAndReturnEOF.Not)
+			F.ODBC.Connection!Con.Close
+			F.Intrinsic.String.Split(V.Local.sGroupRet, "*!*", V.Local.sGroupRet)
+			
+			'if it's a flat fee, set it, if it's a quantity break, build the table
+			F.Intrinsic.Control.If(V.Local.sGroupRet(0).Trim, =, "FF")
+				V.Global.fPrice.Set(V.Local.sGroupRet(1))				
+			F.Intrinsic.Control.Else
+				V.Global.bQTYBRK.Set(True)
+			
+				F.Data.DataTable.Create("dtPriceTemp", True)
+				F.Data.DataTable.AddColumn("dtPriceTemp","Quantity", "Float")
+				F.Data.DataTable.AddColumn("dtPriceTemp", "Price", "Float")
+
+				F.Intrinsic.Control.For(V.Local.iCounter, 2, 20, 2)
+					F.Intrinsic.Math.Add(V.Local.iCounter, 1, V.Local.iTemp)
+					V.Local.fTemp.Set(V.Local.sGroupRet(V.Local.iCounter).Trim)
+					F.Intrinsic.Control.If(V.Local.fTemp, !=, 0)
+						F.Data.DataTable.AddRow("dtPriceTemp", "Quantity", V.Local.sGroupRet(V.Local.iCounter), "Price", V.Local.sGroupRet(V.Local.iTemp))
+					F.Intrinsic.Control.EndIf
+				F.Intrinsic.Control.Next(V.Local.iCounter)
+				F.Intrinsic.UI.Msgbox("There is group part quantity pricing for this customer and part. The price will change depending on the quantity.")
+			F.Intrinsic.Control.EndIf
+					
+		F.Intrinsic.Control.ExitSub
+		F.Intrinsic.Control.EndIf
+		
+	F.Intrinsic.Control.EndIf
+F.Intrinsic.Control.EndIf
+F.ODBC.Connection!Con.Close
+'else use inventory price
+
+F.Intrinsic.Control.Catch
+	F.Intrinsic.String.Build("Project: {0}{1}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}{1}GAB Version: {5}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.End 
+F.Intrinsic.Control.EndTry
+Program.Sub.LoadPrice.End
+
+Program.Sub.QuantityPricing.Start
+F.Intrinsic.Control.Try
+V.Local.sError.Declare
+
+V.Local.sSelect.Declare(String)
+V.Local.sReturn.Declare(String)
+V.Local.sTemp.Declare(String)
+
+F.Intrinsic.String.Build("Quantity <= {0}", V.Screen.FormReturnAndSO!txtQuantity.Text.Trim, V.Local.sSelect)
+F.Data.DataTable.Select("dtPrice", V.Local.sSelect, V.Local.sReturn)
+
+F.Intrinsic.Control.If(V.Local.sReturn.IsNotNoReturn)
+	F.Intrinsic.String.Split(V.Local.sReturn, "*!*", V.Local.sReturn)
+	'datatable is built from lowest quantity to highest quantity, so highest returned should be correct price
+	GUI.FormReturnAndSO.txtPrice.Text(V.DataTable.dtPrice(V.Local.sReturn(V.Local.sReturn.UBound)).PRICE!FieldVal)
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.Catch
+	F.Intrinsic.String.Build("Project: {0}{1}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}{1}GAB Version: {5}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.End 
+F.Intrinsic.Control.EndTry
+Program.Sub.QuantityPricing.End
+
+Program.Sub.SortQBPricing.Start
+F.Intrinsic.Control.If(V.DataTable.dtPriceTemp.Exists)
+	F.Data.DataView.Create("dtPriceTemp", "dvPrice", 22, "", "Quantity")
+	F.Data.DataView.ToDataTable("dtPriceTemp", "dvPrice", "dtPrice", True)
+	F.Data.DataView.Close("dtPriceTemp", "dvPrice")
+	F.Data.DataTable.Close("dtPriceTemp")
+F.Intrinsic.Control.EndIf
+Program.Sub.SortQBPricing.End
+
+Program.Sub.PopulateLocationDropDown.Start
+F.Intrinsic.Control.Try
+V.Local.sError.Declare
+
+V.Local.sRet.Declare(String)
+V.Local.iCounter.Declare(Long)
+
+F.ODBC.Connection!Con.OpenCompanyConnection
+F.ODBC.Connection!Con.ExecuteAndReturn("select RTRIM(LOCATION) as LOCATION from V_LOCATIONS", V.Local.sRet)
+
+F.Intrinsic.Control.If(V.Ambient.ExecuteAndReturnEOF)
+	GUI.FormReturnAndSO.ddlLoc.Enabled(False)
+F.Intrinsic.Control.Else
+	GUI.FormReturnAndSO.ddlLoc.AddItem("All")
+	F.Intrinsic.String.Split(V.Local.sRet, "#$#", V.Local.sRet)
+	F.Intrinsic.Control.For(V.Local.iCounter, 0, V.Local.sRet.UBound, 1)
+		GUI.FormReturnAndSO.ddlLoc.AddItem(V.Local.sRet(V.Local.iCounter).Trim)
+	F.Intrinsic.Control.Next(V.Local.iCounter)
+F.Intrinsic.Control.EndIf
+
+F.ODBC.Connection!Con.Close
+
+F.Intrinsic.Control.Catch
+	F.Intrinsic.String.Build("Project: {0}{1}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}{1}GAB Version: {5}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.End 
+F.Intrinsic.Control.EndTry
+Program.Sub.PopulateLocationDropDown.End
+
+Program.Sub.ddlLoc_Click.Start
+F.Intrinsic.Control.Try
+V.Local.sError.Declare
+
+F.Intrinsic.Control.If(V.Screen.FormReturnAndSO!ddlLoc.Value.Trim, !=, V.Global.sOldLoc.Trim)
+	F.Intrinsic.Control.CallSub(ClearFieldsLine)	
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.Catch
+	F.Intrinsic.String.Build("Project: {0}{1}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}{1}GAB Version: {5}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.End 
+F.Intrinsic.Control.EndTry
+Program.Sub.ddlLoc_Click.End
+
+Program.Sub.LoadReasonTypes.Start
+F.Intrinsic.Control.Try
+V.Local.sError.Declare
+
+F.ODBC.Connection!Con.OpenCompanyConnection
+F.Data.Dictionary.CreateFromSQL("dcReasonTypes", "Con", "select RTRIM(REASON) as REASON, RTRIM(TYPE) as TYPE from GCG_5230_ReasonTypes where RECORDTYPE = 'RSN'")
+F.Data.Dictionary.SetDefaultReturn("dcReasonTypes", "S")
+F.ODBC.Connection!Con.Close
+
+F.Intrinsic.Control.Catch
+	F.Intrinsic.String.Build("Project: {0}{1}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}{1}GAB Version: {5}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.End 
+F.Intrinsic.Control.EndTry
+Program.Sub.LoadReasonTypes.End
+
+Program.Sub.CheckParamsTxt.Start
+F.Intrinsic.Control.Try
+V.Local.sError.Declare
+
+V.Local.bExists.Declare(Boolean)
+V.Local.sPath.Declare(String)
+F.Intrinsic.String.Build("{0}\GSSPARAM{1}.txt", V.Caller.FilesDir, V.Caller.CompanyCode, V.Local.sPath)
+F.Intrinsic.File.Exists(V.Local.sPath, V.Local.bExists)
+
+F.Intrinsic.Control.If(V.Local.bExists.Not)
+	F.Intrinsic.Control.CallSub(CreateParamsTxt)
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.Catch
+	F.Intrinsic.String.Build("Project: {0}{1}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}{1}GAB Version: {5}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.End 
+F.Intrinsic.Control.EndTry
+Program.Sub.CheckParamsTxt.End
+
+Program.Sub.CreateParamsTxt.Start
+F.Intrinsic.Control.Try
+V.Local.sError.Declare
+
+V.Local.sParams.Declare(String)
+V.Local.sPath.Declare(String)
+
+F.Intrinsic.String.Build("WEB ORDER DIRECTORY   = {1}\WEB_ORDERS\{2}{0}WEB ERROR DIRECTORY   = {1}\WEB_ORDERS\{2}\WEB_ERRORS{0}WEB CONVERTED DIR     = {1}\WEB_ORDERS\{2}\CONVERTED{0}WEB UPLOADED DIRECTORY= {1}\WEB_ORDERS\{2}\UPLOADED{0}EMAIL FROM ADDRESS    = {0}EMAIL TO ADDRESS      = ", V.Ambient.NewLine, V.Caller.FilesDir, V.Caller.CompanyCode, V.Local.sParams)
+F.Intrinsic.String.Build("{0}\GSSPARAM{1}.txt", V.Caller.FilesDir, V.Caller.CompanyCode, V.Local.sPath)
+F.Intrinsic.File.String2File(V.Local.sPath, V.Local.sParams)
+
+F.Intrinsic.Control.Catch
+	F.Intrinsic.String.Build("Project: {0}{1}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}{1}GAB Version: {5}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.End 
+F.Intrinsic.Control.EndTry
+Program.Sub.CreateParamsTxt.End
+
+Program.Sub.ddlReturnReason_Click.Start
+F.Intrinsic.Control.Try
+V.Local.sError.Declare
+
+GUI.FormReturnAndSO.txtType.Text(V.Dictionary.dcReasonTypes![V.Screen.FormReturnAndSO!ddlReturnReason.Value.Trim])
+GUI.FormReturnAndSO.cmdAddLine.Enabled(True)
+'GUI.FormReturnAndSO.cmdAddLine.SetFocus
+
+F.Intrinsic.Control.Catch
+	F.Intrinsic.String.Build("Project: {0}{1}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}{1}GAB Version: {5}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.End 
+F.Intrinsic.Control.EndTry
+Program.Sub.ddlReturnReason_Click.End
+
+Program.Sub.LoadOptions.Start
+F.Intrinsic.Control.Try
+V.Local.sError.Declare
+
+V.Local.sRet.Declare(String)
+V.Local.sReturn.Declare(String)
+V.Local.sSalesOrder.Declare(String)
+V.Local.bIn.Declare(Boolean)
+
+F.ODBC.Connection!Con.OpenCompanyConnection
+F.ODBC.Connection!Con.ExecuteAndReturn("select RTRIM(TYPE) as Checked, RTRIM(REASON) as Option from GCG_5230_ReasonTypes where RECORDTYPE = 'CHK'", V.Local.sRet)
+
+F.Intrinsic.Control.If(V.Local.sRet, =, "")
+	F.ODBC.Connection!Con.Close
+	F.Intrinsic.Control.ExitSub
+F.Intrinsic.Control.Else
+	F.Intrinsic.String.Split(V.Local.sRet, "#$#", V.Local.sRet)
+	
+	F.Intrinsic.String.IsInString(V.Local.sRet(0), "SO", True, V.Local.bIn)
+	F.Intrinsic.Control.If(V.Local.bIn)
+		F.Intrinsic.String.Split(V.Local.sRet(0), "*!*", V.Local.sSalesOrder)
+		F.Intrinsic.String.Split(V.Local.sRet(1), "*!*", V.Local.sReturn)
+	F.Intrinsic.Control.Else
+		F.Intrinsic.String.Split(V.Local.sRet(1), "*!*", V.Local.sSalesOrder)
+		F.Intrinsic.String.Split(V.Local.sRet(0), "*!*", V.Local.sReturn)
+	F.Intrinsic.Control.EndIf
+	
+	V.Global.bSOPricing.Set(V.Local.sSalesOrder(0))
+	V.Global.bReturnPricing.Set(V.Local.sReturn(0))
+F.Intrinsic.Control.EndIf
+F.ODBC.Connection!Con.Close
+
+F.Intrinsic.Control.Catch
+	F.Intrinsic.String.Build("Project: {0}{1}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}{1}GAB Version: {5}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.End 
+F.Intrinsic.Control.EndTry
+Program.Sub.LoadOptions.End
+
+Program.Sub.txtCustomer_LostFocus.Start
+F.Intrinsic.Control.Try
+V.Local.sError.Declare
+
+F.Intrinsic.Control.If(V.Screen.FormReturnAndSO!txtCustomer.Text.Trim, =, V.Global.sOldCustomer.Trim)
+	F.Intrinsic.Control.ExitSub
+F.Intrinsic.Control.Else
+	V.Global.sOldCustomer.Set(V.Screen.FormReturnAndSO!txtCustomer.Text.Trim)
+F.Intrinsic.Control.EndIf
+
+V.Local.sSQL.Declare(String)
+V.Local.sRet.Declare(String)
+
+F.Intrinsic.String.Build("select CUSTOMER, NAME_CUSTOMER from V_CUSTOMER_MASTER where CUSTOMER = '{0}'", V.Screen.FormReturnAndSO!txtCustomer.Text.Trim, V.Local.sSQL)
+
+F.ODBC.Connection!Con.OpenCompanyConnection
+F.ODBC.Connection!Con.ExecuteAndReturn(V.Local.sSQL, V.Local.sRet)
+F.ODBC.Connection!Con.Close
+F.Intrinsic.Control.If(V.Ambient.ExecuteAndReturnEOF.Not)
+	F.Intrinsic.String.Split(V.Local.sRet, "*!*", V.Local.sRet)
+	GUI.FormReturnAndSO.txtCustomer.Text(V.Local.sRet(0).Trim)
+	GUI.FormReturnAndSO.txtCustomerName.Text(V.Local.sRet(1).Trim)
+	
+	GUI.FormReturnAndSO.ddlShipTo.Enabled(True)
+	GUI.FormReturnAndSO.ddlReturnReason.Enabled(True)
+	GUI.FormReturnAndSO.cmdPartBrowser.Enabled(True)
+	GUI.FormReturnAndSO.cmdCustomerPartBrowser.Enabled(True)
+	'GUI.FormReturnAndSO.txtContract.Enabled(True)
+	GUI.FormReturnAndSO.cmdContractBrowser.Enabled(True)
+	
+	'Also load SHIP to IDs
+	F.Intrinsic.Control.CallSub(LoadShipToDDL)
+	
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.Catch
+	F.Intrinsic.String.Build("Project: {0}{1}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}{1}GAB Version: {5}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.End 
+F.Intrinsic.Control.EndTry
+Program.Sub.txtCustomer_LostFocus.End
+
+Program.Sub.cmdClear_Click.Start
+F.Intrinsic.Control.Try
+V.Local.sError.Declare
+
+F.Intrinsic.Control.CallSub(ClearFieldsLine)
+GUI.FormReturnAndSO.cmdAddLine.Enabled(False)
+
+F.Intrinsic.Control.Catch
+	F.Intrinsic.String.Build("Project: {0}{1}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}{1}GAB Version: {5}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.End 
+F.Intrinsic.Control.EndTry
+Program.Sub.cmdClear_Click.End
+
+Program.Sub.cmdClearAll_Click.Start
+F.Intrinsic.Control.Try
+V.Local.sError.Declare
+
+F.Intrinsic.Control.CallSub(ClearFields)
+F.Intrinsic.Control.CallSub(DisableAll)
+
+F.Intrinsic.Control.Catch
+	F.Intrinsic.String.Build("Project: {0}{1}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}{1}GAB Version: {5}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.End 
+F.Intrinsic.Control.EndTry
+Program.Sub.cmdClearAll_Click.End
+
+Program.Sub.cmdCustomerPartBrowser_Click.Start
+F.Intrinsic.Control.Try
+V.Local.sError.Declare
+
+V.Local.sSQL.Declare(String)
+V.Local.sLoc.Declare(String)
+V.Local.sRet.Declare(String)
+V.Local.sPriceRet.Declare(String)
+
+F.Intrinsic.Control.If(V.Screen.FormReturnAndSO!ddlLoc.Value.Trim, =, "ALL")
+	V.Local.sLoc.Set("")
+F.Intrinsic.Control.Else
+	V.Local.sLoc.Set(V.Screen.FormReturnAndSO!ddlLoc.Value.Trim)
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.String.Build("select RTRIM(PART) as PART, RTRIM(CUSTOMER_PART) as CUSTOMER_PART, RTRIM(DESCRIPTION) as DESCRIPTION from V_INV_CROSS_REF where CUSTOMER = '{0}' and LOCATION = '{1}'", V.Screen.FormReturnAndSO!txtCustomer.Text.Trim, V.Local.sLoc, V.Local.sSQL)
+
+F.ODBC.Connection!Con.OpenCompanyConnection
+F.Intrinsic.UI.Browser("Customer Part", "Con", V.Local.sSQL, "Part*!*Customer Part*!*Description", "50*!*50*!*100", V.Local.sRet)
+
+F.Intrinsic.Control.If(V.Local.sRet.IsNotCancel)
+	F.Intrinsic.String.Split(V.Local.sRet, "*!*", V.Local.sRet)
+	GUI.FormReturnAndSO.txtPartNumber.Text(V.Local.sRet(0).Trim)
+	GUI.FormReturnAndSO.txtCustomerPart.Text(V.Local.sRet(1).Trim)
+	GUI.FormReturnAndSO.txtPartDescription.Text(V.Local.sRet(2).Trim)
+	
+	'get price
+	F.Intrinsic.String.Build("select AMT_PRICE from V_INVENTORY_MSTR where PART = '{0}' and LOCATION = '{1}'", V.Local.sRet(0).Trim, V.Local.sLoc, V.Local.sSQL)
+	F.ODBC.Connection!Con.ExecuteAndReturn(V.Local.sSQL, V.Local.sPriceRet)
+	F.ODBC.Connection!Con.Close
+	
+	F.Intrinsic.Control.If(V.Ambient.ExecuteAndReturnEOF)
+		V.Global.fPrice.Set(0)
+	F.Intrinsic.Control.Else
+		F.Intrinsic.String.Format(V.Local.sPriceRet.Trim, "########0.00", V.Local.sPriceRet)
+		V.Global.fPrice.Set(V.Local.sPriceRet.Trim)
+	F.Intrinsic.Control.EndIf
+	
+	F.Intrinsic.Control.CallSub(LoadPrice)
+	F.Intrinsic.Control.CallSub(SortQBPricing)
+	
+	GUI.FormReturnAndSO.txtPrice.Text(V.Global.fPrice)
+	
+	F.Intrinsic.Control.If(V.Screen.FormReturnAndSO!ddlLoc.Value.Trim, !=, V.Local.sRet(1).Trim)
+		GUI.FormReturnAndSO.ddlLoc.Text(V.Local.sRet(1).Trim)
+	F.Intrinsic.Control.EndIf
+	
+	V.Global.sOldLoc.Set(V.Local.sRet(1).Trim)
+	
+	GUI.FormReturnAndSO.txtPrice.Enabled(V.Global.bPricing)
+	GUI.FormReturnAndSO.txtQuantity.Enabled(True)
+	GUI.FormReturnAndSO.txtQuantity.SetFocus
+	gui.FormReturnAndSO.txtQuantity.SelectAll
+F.Intrinsic.Control.EndIf
+
+F.ODBC.Connection!Con.Close
+
+F.Intrinsic.Control.Catch
+	F.Intrinsic.String.Build("Project: {0}{1}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}{1}GAB Version: {5}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.End 
+F.Intrinsic.Control.EndTry
+Program.Sub.cmdCustomerPartBrowser_Click.End
+
+Program.Sub.cmdDeleteLine_Click.Start
+F.Intrinsic.Control.Try
+V.Local.sError.Declare
+
+V.Local.sRows.Declare(String)
+GUI.FormReturnAndSO.gsgcOrderGrid.GetSelectedRows("gvOrderLines", V.Local.sRows)
+
+F.Intrinsic.Control.If(V.Local.sRows, !=, "")
+	F.Data.DataTable.DeleteRow("dtOrderLines", V.Local.sRows)
+	F.Data.DataTable.AcceptChanges("dtOrderLines")
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.Catch
+	F.Intrinsic.String.Build("Project: {0}{1}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}{1}GAB Version: {5}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.End 
+F.Intrinsic.Control.EndTry
+Program.Sub.cmdDeleteLine_Click.End
+
+Program.Sub.gsgcOrderGrid_RowClick.Start
+F.Intrinsic.Control.Try
+V.Local.sError.Declare
+
+V.Local.sRow.Declare(String)
+F.Intrinsic.Control.If(V.Args.Clicks, >, 1)
+	'load the row
+	GUI.FormReturnAndSO.gsgcOrderGrid.GetSelectedRows("gvOrderLines", V.Local.sRow)
+	
+	GUI.FormReturnAndSO.txtPartNumber.Text(V.DataTable.dtOrderLines(V.Local.sRow).Part!FieldValTrim)
+	GUI.FormReturnAndSO.txtPartDescription.Text(V.DataTable.dtOrderLines(V.Local.sRow).Description!FieldValTrim)
+	GUI.FormReturnAndSO.txtPrice.Text(V.DataTable.dtOrderLines(V.Local.sRow).Price!FieldValTrim)
+	GUI.FormReturnAndSO.txtQuantity.Text(V.DataTable.dtOrderLines(V.Local.sRow).Quantity!FieldValTrim)
+	GUI.FormReturnAndSO.txtTotal.Text(V.DataTable.dtOrderLines(V.Local.sRow).Total!FieldValTrim)
+	GUI.FormReturnAndSO.txtType.Text(V.DataTable.dtOrderLines(V.Local.sRow).Type!FieldValTrim)
+	GUI.FormReturnAndSO.ddlReturnReason.Text(V.DataTable.dtOrderLines(V.Local.sRow).Reason!FieldValTrim)
+	
+	F.Data.DataTable.DeleteRow("dtOrderLines", V.Local.sRow)
+	F.Data.DataTable.AcceptChanges("dtOrderLines")
+	GUI.FormReturnAndSO.cmdAddLine.Caption("Save Line")
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.Catch
+	F.Intrinsic.String.Build("Project: {0}{1}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}{1}GAB Version: {5}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.End 
+F.Intrinsic.Control.EndTry
+Program.Sub.gsgcOrderGrid_RowClick.End
+
+Program.Sub.SaveNewOrderNumber.Start
+F.Intrinsic.Control.Try
+V.Local.sError.Declare
+
+V.Local.sSQL.Declare(String)
+V.Local.sRet.Declare(String)
+V.Local.iNum.Declare(String)
+V.Local.sNum.Declare(String)
+V.Local.sType.Declare(String)
+V.Local.sRecordType.Declare(String)
+V.Local.sID.Declare(String)
+V.Local.sSQL2.Declare(String)
+
+F.Intrinsic.Control.If(V.Screen.FormReturnAndSO!frameReturn.Visible)
+	V.Local.sSQL.Set("select RTRIM(TYPE) as Type from GCG_5230_REASONTYPES where RECORDTYPE = 'RTN'")
+	V.Local.sSQL2.Set("update GCG_5230_REASONTYPES set TYPE = (CAST(TYPE AS Integer) + 1) where RECORDTYPE = 'RTN'")
+	V.Local.sType.Set("R")
+	V.Local.sRecordType.Set("RTN")
+F.Intrinsic.Control.Else
+	V.Local.sSQL.Set("select RTRIM(TYPE) as Type from GCG_5230_REASONTYPES where RECORDTYPE = 'SON'")
+	V.Local.sSQL2.Set("update GCG_5230_REASONTYPES set TYPE = (CAST(TYPE AS Integer) + 1) where RECORDTYPE = 'SON'")
+	V.Local.sType.Set("S")
+	V.Local.sRecordType.Set("SON")
+F.Intrinsic.Control.EndIf
+
+F.ODBC.Connection!Con.OpenCompanyConnection
+F.ODBC.Connection!Con.ExecuteAndReturn(V.Local.sSQL, V.Local.sRet)
+
+F.Intrinsic.Control.If(V.Ambient.ExecuteAndReturnEOF)
+	V.Local.iNum.Set(0)
+F.Intrinsic.Control.Else
+	V.Local.iNum.Set(V.Local.sRet)
+	F.Intrinsic.Math.Add(V.Local.iNum, 1, V.Local.iNum)
+F.Intrinsic.Control.EndIf
+
+'adding this because they were having issues with duplicate RTN numbers
+F.ODBC.Connection!Con.Execute(V.Local.sSQL2)
+
+F.Intrinsic.String.Format(V.Local.iNum, "0000000", V.Local.sNum)
+
+'was originally doing it after upload, now doing this in the upload
+
+'V.Local.sSQL.Set("Select top 1 Order_NO from V_ORDER_HEADER where LAST_CHG_PGM = 'ORDUP3' order by ORDER_NO desc")
+'F.ODBC.Connection!Con.ExecuteAndReturn(V.Local.sSQL, V.Local.sRet)
+
+'F.Intrinsic.Control.If(V.Ambient.ExecuteAndReturnEOF)
+'	F.ODBC.Connection!Con.Close
+'	F.Intrinsic.Control.ExitSub
+'F.Intrinsic.Control.EndIf
+
+'F.Intrinsic.String.Build("Update ORDER_HEADER set USER_2 = '{0}{1}' where ORDER_NO = '{2}'", V.Local.sType, V.Local.sNum, V.Local.sRet, V.Local.sSQL)
+'F.ODBC.Connection!Con.Execute(V.Local.sSQL)
+
+F.Intrinsic.String.Build("{0}{1}", V.Local.sType, V.Local.sNum, V.Local.sID)
+F.Data.DataTable.SetValue("ORDUPL", 0, "UserField2Head", V.Local.sID)
+
+F.Intrinsic.Control.If(V.Local.iNum, =, 0)
+	F.Intrinsic.String.Build("Insert into GCG_5230_ReasonTypes (Type, RecordType) values ('{0}', '{1}')", V.Local.sNum, V.Local.sRecordType, V.Local.sSQL)
+F.Intrinsic.Control.Else
+	'F.Intrinsic.String.Build("update GCG_5230_REASONTYPES set TYPE = '{0}' where RECORDTYPE = '{1}'", V.Local.sNum, V.Local.sRecordType, V.Local.sSQL)
+	'Do Nothing, it was updated above
+F.Intrinsic.Control.EndIf
+
+F.ODBC.Connection!Con.Execute(V.Local.sSQL)
+F.ODBC.Connection!Con.Close
+
+F.Intrinsic.Variable.AddRV("ID", V.Local.sID)
+
+F.Intrinsic.Control.Catch
+	F.Intrinsic.String.Build("Project: {0}{1}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}{1}GAB Version: {5}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.End 
+F.Intrinsic.Control.EndTry
+Program.Sub.SaveNewOrderNumber.End
+
+Program.Sub.ddlReturnReason_LostFocus.Start
+F.Intrinsic.Control.If(V.Global.sReason.Trim, !=, V.Screen.FormReturnAndSO!ddlReturnReason.Value.Trim)
+	GUI.FormReturnAndSO.cmdAddLine.SetFocus
+F.Intrinsic.Control.EndIf
+Program.Sub.ddlReturnReason_LostFocus.End
+
+Program.Sub.ddlReturnReason_GotFocus.Start
+V.Global.sReason.Set(V.Screen.FormReturnAndSO!ddlReturnReason.Value.Trim)
+Program.Sub.ddlReturnReason_GotFocus.End
+
+Program.Sub.cmdContractBrowser_Click.Start
+F.Intrinsic.Control.Try
+V.Local.sError.Declare
+
+GUI.FormReturnAndSO.cmdContractBrowser.Enabled(False)
+
+V.Local.sRet.Declare(String)
+V.Local.sSQL.Declare(String)
+V.Local.sShipTo.Declare(String)
+
+F.Intrinsic.String.Split(V.Screen.FormReturnAndSO!ddlShipTo.Text.Trim, " - ", V.Local.sShipTo)
+
+F.Intrinsic.String.Build("select distinct RTRIM(CONTRACT) as Contract, RTRIM(Customer) as Customer, RTRIM(SHIP_SEQ) as Ship from OE_K_PRICE where KEY_TYPE = 'KL' and CUSTOMER = '{0}' and SHIP_SEQ = '{1}'", V.Screen.FormReturnAndSO!txtCustomer.Text.Trim, V.Local.sShipTo(0).Trim, V.Local.sSQL)
+
+F.ODBC.Connection!Con.OpenCompanyConnection
+F.Intrinsic.UI.Browser("Contract Browser", "Con", V.Local.sSQL, "Contract*!*Customer*!*Ship To", "30*!*30*!*30", V.Local.sRet)
+F.ODBC.Connection!Con.Close
+
+F.Intrinsic.Control.If(V.Local.sRet.IsNotCancel)
+	F.Intrinsic.String.Split(V.Local.sRet, "*!*", V.Local.sRet)
+	GUI.FormReturnAndSO.txtContract.Text(V.Local.sRet(0).Trim)
+	V.Global.sOldContract.Set(V.Local.sRet(0).Trim)
+F.Intrinsic.Control.EndIf
+
+GUI.FormReturnAndSO.cmdContractBrowser.Enabled(True)
+GUI.FormReturnAndSO.cmdPartBrowser.SetFocus
+
+F.Intrinsic.Control.Catch
+	F.Intrinsic.String.Build("Project: {0}{1}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}{1}GAB Version: {5}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.End 
+F.Intrinsic.Control.EndTry
+Program.Sub.cmdContractBrowser_Click.End
+
+'decided not to do this, as it was interfering with other events
+'Program.Sub.txtContract_LostFocus.Start
+'Function.Intrinsic.Debug.InvokeDebugger
+'Function.Intrinsic.Debug.Stop
+
+'V.Local.sSQL.Declare(String)
+'V.Local.sRet.Declare(String)
+
+'F.Intrinsic.Control.If(V.Screen.FormReturnAndSO!txtContract.Text.Trim, =, V.Global.sOldContract.Trim)
+'	F.Intrinsic.Control.ExitSub
+'F.Intrinsic.Control.EndIf
+
+'F.Intrinsic.String.Build("select Contract from OE_K_PRICE where KEY_TYPE = 'KL' and CUSTOMER = '{0}' and SHIP_SEQ = '{1}'", V.Screen.FormReturnAndSO!txtCustomer.Text.Trim, V.Screen.FormReturnAndSO!ddlShipTo.Text.Trim, V.Local.sSQL)
+'F.ODBC.Connection!Con.OpenCompanyConnection
+'F.ODBC.Connection!Con.ExecuteAndReturn(V.Local.sSQL, V.Local.sRet)
+'F.ODBC.Connection!Con.Close
+
+'F.Intrinsic.Control.If(V.Ambient.ExecuteAndReturnEOF)
+'	F.Intrinsic.UI.Msgbox("Warning: This is not a valid contract for this customer and ship to combination")
+'F.Intrinsic.Control.EndIf
+
+'V.Global.sOldContract.Set(V.Screen.FormReturnAndSO!txtContract.Text.Trim)
+'Program.Sub.txtContract_LostFocus.End

@@ -1,0 +1,190 @@
+Program.Sub.ScreenSU.Start
+Gui.FormMaintenance..Create
+Gui.FormMaintenance..Caption("Reason Maintenance")
+Gui.FormMaintenance..Size(5205,6495)
+Gui.FormMaintenance..MinX(0)
+Gui.FormMaintenance..MinY(0)
+Gui.FormMaintenance..Position(0,0)
+Gui.FormMaintenance..BackColor(-2147483633)
+Gui.FormMaintenance..MousePointer(0)
+Gui.FormMaintenance..Event(UnLoad,FormMaintenance_UnLoad)
+Gui.FormMaintenance..Sizeable(False)
+Gui.FormMaintenance.chkReturnPricing.Create(CheckBox)
+Gui.FormMaintenance.chkReturnPricing.Size(2400,540)
+Gui.FormMaintenance.chkReturnPricing.Position(210,195)
+Gui.FormMaintenance.chkReturnPricing.Caption("Allow users to override price on returns")
+Gui.FormMaintenance.chkSOPricing.Create(CheckBox)
+Gui.FormMaintenance.chkSOPricing.Size(2295,570)
+Gui.FormMaintenance.chkSOPricing.Position(2730,195)
+Gui.FormMaintenance.chkSOPricing.Caption("Allow users to override price on Sales Orders")
+Gui.FormMaintenance.gsgcReturnReasons.Create(GsGridControl)
+Gui.FormMaintenance.gsgcReturnReasons.Size(5205,4590)
+Gui.FormMaintenance.gsgcReturnReasons.Position(0,1185)
+Gui.FormMaintenance.lblTypes.Create(Label,"Return Reason Types : ",True,1935,255,0,1590,945,True,0,"Arial",8,-2147483633,0)
+Gui.FormMaintenance.cmdSave.Create(Button)
+Gui.FormMaintenance.cmdSave.Size(990,375)
+Gui.FormMaintenance.cmdSave.Position(4020,5820)
+Gui.FormMaintenance.cmdSave.Caption("Save")
+Gui.FormMaintenance.cmdSave.Event(Click,cmdSave_Click)
+Program.Sub.ScreenSU.End
+
+Program.Sub.Preflight.Start
+Program.Sub.Preflight.End
+
+Program.Sub.Main.Start
+F.Intrinsic.Control.Try
+V.Local.sError.Declare
+
+F.ODBC.Connection!Con.OpenCompanyConnection
+F.Intrinsic.Control.CallSub(LoadGrid)
+F.Intrinsic.Control.CallSub(LoadOptions)
+F.ODBC.Connection!Con.Close
+
+GUI.FormMaintenance..Show
+
+F.Intrinsic.Control.Catch
+	F.Intrinsic.String.Build("Project: {0}{1}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}{1}GAB Version: {5}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.End 
+F.Intrinsic.Control.EndTry
+Program.Sub.Main.End
+
+Program.Sub.FormMaintenance_UnLoad.Start
+F.Intrinsic.Control.Try
+V.Local.sError.Declare
+
+F.Intrinsic.Control.End
+
+F.Intrinsic.Control.Catch
+	F.Intrinsic.String.Build("Project: {0}{1}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}{1}GAB Version: {5}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.End 
+F.Intrinsic.Control.EndTry
+Program.Sub.FormMaintenance_UnLoad.End
+
+Program.Sub.cmdSave_Click.Start
+F.Intrinsic.Control.Try
+V.Local.sError.Declare
+
+GUI.FormMaintenance.cmdSave.Enabled(False)
+V.Local.sSQL.Declare(String)
+V.Local.sRet.Declare(String)
+V.Local.iCounter.Declare(Long)
+
+'Check for valid entries
+F.Intrinsic.Control.For(V.Local.iCounter, 0, V.DataTable.dtFinalReasons.RowCount--, 1)
+	F.Intrinsic.Control.If(V.DataTable.dtFinalReasons(V.Local.iCounter).TYPE!FieldValTrim, !=, "D", and,V.DataTable.dtFinalReasons(V.Local.iCounter).TYPE!FieldValTrim, !=, "S")
+		F.Intrinsic.UI.Msgbox("Error: Type must be D or S.")
+		GUI.FormMaintenance.cmdSave.Enabled(True)
+		F.Intrinsic.Control.ExitSub
+	F.Intrinsic.Control.EndIf
+F.Intrinsic.Control.Next(V.Local.iCounter)
+
+F.ODBC.Connection!Con.OpenCompanyConnection
+
+F.Data.DataTable.SaveToDB("dtFinalReasons", "Con", "GCG_5230_ReasonTypes", "Reason", 256, "Reason@!@REASON*!*Type@!@Type*!*RECORDTYPE@!@RECORDTYPE")
+
+F.ODBC.Connection!Con.ExecuteAndReturn("select ID from GCG_5230_ReasonTypes where RECORDTYPE = 'CHK' and REASON = 'RT'", V.Local.sRet)
+F.Intrinsic.Control.If(V.Ambient.ExecuteAndReturnEOF)
+	F.Intrinsic.String.Build("insert into GCG_5230_ReasonTypes (REASON, TYPE, RECORDTYPE) values ('RT', '{0}', 'CHK')", V.Screen.FormMaintenance!chkReturnPricing.CheckedAsBoolean, V.Local.sSQL)
+F.Intrinsic.Control.Else
+	F.Intrinsic.String.Build("update GCG_5230_ReasonTypes set TYPE = '{0}' where Reason = 'RT' and RECORDTYPE = 'CHK'", V.Screen.FormMaintenance!chkReturnPricing.CheckedAsBoolean, V.Local.sSQL)
+F.Intrinsic.Control.EndIf
+F.ODBC.Connection!Con.Execute(V.Local.sSQL)
+
+F.ODBC.Connection!Con.ExecuteAndReturn("select ID from GCG_5230_ReasonTypes where RECORDTYPE = 'CHK' and REASON = 'SO'", V.Local.sRet)
+F.Intrinsic.Control.If(V.Ambient.ExecuteAndReturnEOF)
+	F.Intrinsic.String.Build("insert into GCG_5230_ReasonTypes (REASON, TYPE, RECORDTYPE) values ('SO', '{0}', 'CHK')", V.Screen.FormMaintenance!chkSOPricing.CheckedAsBoolean, V.Local.sSQL)
+F.Intrinsic.Control.Else
+	F.Intrinsic.String.Build("update GCG_5230_ReasonTypes set TYPE = '{0}' where Reason = 'SO' and RECORDTYPE = 'CHK'", V.Screen.FormMaintenance!chkSOPricing.CheckedAsBoolean, V.Local.sSQL)
+F.Intrinsic.Control.EndIf
+F.ODBC.Connection!Con.Execute(V.Local.sSQL)
+
+F.ODBC.Connection!Con.Close
+
+F.Intrinsic.UI.Msgbox("Changes saved successfully.")
+GUI.FormMaintenance.cmdSave.Enabled(True)
+
+F.Intrinsic.Control.Catch
+	F.Intrinsic.String.Build("Project: {0}{1}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}{1}GAB Version: {5}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.End 
+F.Intrinsic.Control.EndTry
+Program.Sub.cmdSave_Click.End
+
+Program.Sub.LoadGrid.Start
+F.Intrinsic.Control.Try
+V.Local.sError.Declare
+
+'F.ODBC.Connection!Con.ExecuteAndReturn("select RTRIM(KEY_VALUE) from V_OE_USER_VALUES where CUST = '' and PART = ''", V.Local.sRet)
+F.Data.DataTable.CreateFromSQL("dtReasons", "Con", "select RTRIM(KEY_VALUE) as REASON from V_OE_USER_VALUES where CUST = '' and PART = ''")
+F.Data.DataTable.CreateFromSQL("dtReasonTypes", "Con", "select RTRIM(REASON) as REASON, RTRIM(TYPE) as TYPE from GCG_5230_ReasonTypes where RECORDTYPE = 'RSN'")
+F.Data.Linq.Join("LeftJoin", "DataTable", "dtReasons*!*A", "DataTable", "dtReasonTypes*!*B", "A.Reason = B.Reason", "A.Reason*!*B.Type", "", "", "", "dtFinalReasons", True)
+F.Data.DataTable.Close("dtReasons")
+F.Data.DataTable.Close("dtReasonTypes")
+
+F.Data.DataTable.AddColumn("dtFinalReasons", "RECORDTYPE", "STRING", "RSN")
+
+GUI.FormMaintenance.gsgcReturnReasons.AddGridviewFromDatatable("gvReasons", "dtFinalReasons")
+
+GUI.FormMaintenance.gsgcReturnReasons.SetColumnProperty("gvReasons", "RECORDTYPE", "AllowEdit", False)
+GUI.FormMaintenance.gsgcReturnReasons.SetColumnProperty("gvReasons", "RECORDTYPE", "Visible", False)
+
+GUI.FormMaintenance.gsgcReturnReasons.SetColumnProperty("gvReasons", "REASON", "Caption", "Reason")
+GUI.FormMaintenance.gsgcReturnReasons.SetColumnProperty("gvReasons", "Type", "Caption", "Type")
+GUI.FormMaintenance.gsgcReturnReasons.SetColumnProperty("gvReasons", "REASON", "HeaderFontBold", True)
+GUI.FormMaintenance.gsgcReturnReasons.SetColumnProperty("gvReasons", "Type", "HeaderFontBold", True)
+
+GUI.FormMaintenance.gsgcReturnReasons.SetColumnProperty("gvReasons", "REASON", "AllowEdit", False)
+GUI.FormMaintenance.gsgcReturnReasons.SetColumnProperty("gvReasons", "REASON", "ReadOnly", True)
+
+GUI.FormMaintenance.gsgcReturnReasons.SetColumnProperty("gvReasons", "Type", "AllowEdit", True)
+GUI.FormMaintenance.gsgcReturnReasons.SetColumnProperty("gvReasons", "Type", "ReadOnly", False)
+
+GUI.FormMaintenance.gsgcReturnReasons.SetColumnProperty("gvReasons", "Type", "EditMaskType", "REGEX")
+GUI.FormMaintenance.gsgcReturnReasons.SetColumnProperty("gvReasons", "Type", "EditMask", "[SD]")
+
+GUI.FormMaintenance.gsgcReturnReasons.MainView("gvReasons")
+
+F.Intrinsic.Control.Catch
+	F.Intrinsic.String.Build("Project: {0}{1}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}{1}GAB Version: {5}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.End 
+F.Intrinsic.Control.EndTry
+Program.Sub.LoadGrid.End
+
+Program.Sub.LoadOptions.Start
+F.Intrinsic.Control.Try
+V.Local.sError.Declare
+
+V.Local.sRet.Declare(String)
+V.Local.sReturn.Declare(String)
+V.Local.sSalesOrder.Declare(String)
+V.Local.bIn.Declare(Boolean)
+
+F.ODBC.Connection!Con.ExecuteAndReturn("select RTRIM(TYPE) as Checked, RTRIM(REASON) as Option from GCG_5230_ReasonTypes where RECORDTYPE = 'CHK'", V.Local.sRet)
+
+F.Intrinsic.Control.If(V.Local.sRet, =, "")
+	F.Intrinsic.Control.ExitSub
+F.Intrinsic.Control.Else
+	F.Intrinsic.String.Split(V.Local.sRet, "#$#", V.Local.sRet)
+	
+	F.Intrinsic.String.IsInString(V.Local.sRet(0), "SO", True, V.Local.bIn)
+	F.Intrinsic.Control.If(V.Local.bIn)
+		F.Intrinsic.String.Split(V.Local.sRet(0), "*!*", V.Local.sSalesOrder)
+		F.Intrinsic.String.Split(V.Local.sRet(1), "*!*", V.Local.sReturn)
+	F.Intrinsic.Control.Else
+		F.Intrinsic.String.Split(V.Local.sRet(1), "*!*", V.Local.sSalesOrder)
+		F.Intrinsic.String.Split(V.Local.sRet(0), "*!*", V.Local.sReturn)
+	F.Intrinsic.Control.EndIf
+	
+	GUI.FormMaintenance.chkReturnPricing.Value(V.Local.sReturn(0))
+	GUI.FormMaintenance.chkSOPricing.Value(V.Local.sSalesOrder(0))
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.Catch
+	F.Intrinsic.String.Build("Project: {0}{1}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}{1}GAB Version: {5}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.End 
+F.Intrinsic.Control.EndTry
+Program.Sub.LoadOptions.End
